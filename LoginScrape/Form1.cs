@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Scraper;
+
 namespace LoginScrape
 {
     public partial class Form1 : System.Windows.Forms.Form
@@ -37,9 +39,15 @@ namespace LoginScrape
             
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
-                txtKarma.Text = "Loading...";
-                Scraper.Scraper scraper = scraperManager.GetScraper("RedditKarmaScraper", new object[3] { loginForm.Username, loginForm.Password, txtKarma });
-                scraper.Scrape(); // scrapers gonna scrape
+                try
+                {
+                    Scraper.Scraper scraper = scraperManager.GetScraper("RedditKarmaScraper", new object[3] { loginForm.Username, loginForm.Password, txtKarma });
+                    scraper.Scrape(); // scrapers gonna scrape
+                }
+                catch (NullReferenceException)
+                {
+                    MessageBox.Show("Couldn't load RedditKarmaScraper");
+                }
             }
             loginForm.Dispose();
         }
