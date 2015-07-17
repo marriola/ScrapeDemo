@@ -6,11 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-using Scraper;
-
-namespace LoginScrape
+namespace Scraper
 {
-    class ScraperManager
+    public class ScraperManager
     {
         private static string rootNamespace = "Scraper";
         public static ScraperManager sharedInstance = null;
@@ -70,14 +68,14 @@ namespace LoginScrape
         /// <param name="className"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public Scraper.Scraper GetScraper(string className, object[] args)
+        public Scraper GetScraper(string className, object[] args)
         {
             if (!m_externalScrapers.ContainsKey(className))
             {
                 throw new ArgumentException("Scraper class " + className + " not found");
             }
 
-            return (Scraper.Scraper)Activator.CreateInstance(m_externalScrapers[className], args);
+            return (Scraper)Activator.CreateInstance(m_externalScrapers[className], args);
         }
 
         /// <summary>
