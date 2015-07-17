@@ -1,0 +1,7 @@
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\PsecuAccountScraper\obj\Debug\PsecuAccountScraper.csprojResolveAssemblyReference.cache
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\PsecuAccountScraper\bin\Debug\PsecuAccountScraper.dll
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\PsecuAccountScraper\bin\Debug\PsecuAccountScraper.pdb
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\PsecuAccountScraper\bin\Debug\Scraper.dll
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\PsecuAccountScraper\bin\Debug\Scraper.pdb
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\PsecuAccountScraper\obj\Debug\PsecuAccountScraper.dll
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\PsecuAccountScraper\obj\Debug\PsecuAccountScraper.pdb

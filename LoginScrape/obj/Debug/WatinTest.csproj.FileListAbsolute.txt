@@ -1,0 +1,10 @@
+c:\users\arriolm\documents\visual studio 2012\Projects\WatinTest\WatinTest\bin\Debug\WatinTest.exe.config
+c:\users\arriolm\documents\visual studio 2012\Projects\WatinTest\WatinTest\bin\Debug\WatinTest.exe
+c:\users\arriolm\documents\visual studio 2012\Projects\WatinTest\WatinTest\bin\Debug\WatinTest.pdb
+c:\users\arriolm\documents\visual studio 2012\Projects\WatinTest\WatinTest\obj\Debug\WatinTest.csprojResolveAssemblyReference.cache
+c:\users\arriolm\documents\visual studio 2012\Projects\WatinTest\WatinTest\obj\Debug\WatinTest.Form1.resources
+c:\users\arriolm\documents\visual studio 2012\Projects\WatinTest\WatinTest\obj\Debug\WatinTest.Login.resources
+c:\users\arriolm\documents\visual studio 2012\Projects\WatinTest\WatinTest\obj\Debug\WatinTest.Properties.Resources.resources
+c:\users\arriolm\documents\visual studio 2012\Projects\WatinTest\WatinTest\obj\Debug\WatinTest.csproj.GenerateResource.Cache
+c:\users\arriolm\documents\visual studio 2012\Projects\WatinTest\WatinTest\obj\Debug\WatinTest.exe
+c:\users\arriolm\documents\visual studio 2012\Projects\WatinTest\WatinTest\obj\Debug\WatinTest.pdb

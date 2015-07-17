@@ -1,0 +1,7 @@
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\RedditKarmaScraper\obj\Debug\RedditKarmaScraper.csprojResolveAssemblyReference.cache
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\RedditKarmaScraper\bin\Debug\RedditKarmaScraper.dll
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\RedditKarmaScraper\bin\Debug\RedditKarmaScraper.pdb
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\RedditKarmaScraper\bin\Debug\Scraper.dll
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\RedditKarmaScraper\bin\Debug\Scraper.pdb
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\RedditKarmaScraper\obj\Debug\RedditKarmaScraper.dll
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\RedditKarmaScraper\obj\Debug\RedditKarmaScraper.pdb

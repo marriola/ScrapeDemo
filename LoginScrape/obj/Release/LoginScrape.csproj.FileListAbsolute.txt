@@ -1,0 +1,9 @@
+C:\Users\Arriolm\Documents\Visual Studio 2012\Projects\LoginScrape\LoginScrape\bin\Release\LoginScrape.exe.config
+C:\Users\Arriolm\Documents\Visual Studio 2012\Projects\LoginScrape\LoginScrape\bin\Release\LoginScrape.exe
+C:\Users\Arriolm\Documents\Visual Studio 2012\Projects\LoginScrape\LoginScrape\bin\Release\LoginScrape.pdb
+C:\Users\Arriolm\Documents\Visual Studio 2012\Projects\LoginScrape\LoginScrape\obj\Release\LoginScrape.Form1.resources
+C:\Users\Arriolm\Documents\Visual Studio 2012\Projects\LoginScrape\LoginScrape\obj\Release\LoginScrape.Login.resources
+C:\Users\Arriolm\Documents\Visual Studio 2012\Projects\LoginScrape\LoginScrape\obj\Release\LoginScrape.Properties.Resources.resources
+C:\Users\Arriolm\Documents\Visual Studio 2012\Projects\LoginScrape\LoginScrape\obj\Release\LoginScrape.csproj.GenerateResource.Cache
+C:\Users\Arriolm\Documents\Visual Studio 2012\Projects\LoginScrape\LoginScrape\obj\Release\LoginScrape.exe
+C:\Users\Arriolm\Documents\Visual Studio 2012\Projects\LoginScrape\LoginScrape\obj\Release\LoginScrape.pdb

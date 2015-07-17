@@ -1,0 +1,2232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="9a60ee46-d369-4b2e-af9b-7c3214c13838"
+  name="LoginScrape"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="715a3b44-5509-4d81-ad0e-4498e679fcad"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DLoginScrape"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="4e4da971-bc42-4f09-95d4-d2a07c044eb2"
+        name="Scraper"
+        visibility="Package"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="730d727d-3c4e-40dc-bfeb-2d911bbf478a"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="0a299440-8066-4eaa-9a73-d555d886c19e"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f6316ae7-a68f-42a5-829e-973b6f5b591d">
+                <propertyInstance
+                  Id="14c88581-8e49-44dd-b568-2d9bbee9acd3"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cc95063a-dd2b-45af-b76f-0a953d1cdb2e">
+                <propertyInstance
+                  Id="ac2f0605-708f-456e-8698-2e18811b0e43"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0d396592-e3e6-4381-a4bc-35e3ddeffe7b">
+                <propertyInstance
+                  Id="9622d794-7c01-4fdd-a61f-ae4c897c7175"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="17124fd8-f936-41dd-a772-c87ab21be0c2">
+                <propertyInstance
+                  Id="832b1f7c-7d9f-4071-bccd-7fd2f093ae5f"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="439c0982-b820-458b-9e8e-cdfa9766deb1">
+                <propertyInstance
+                  Id="6ca39408-d1b2-4c8e-b50c-68bdcd94e4dd"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="fd28c3cf-0561-4f0a-86e5-83403f00c127"
+            name="START_STATE"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="7c68baee-1304-4ff5-a572-7a8c2e8010db"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3DSTART_STATE"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="7ea337c1-abab-4b8b-bebd-af8193673e50"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="592818b2-9af8-4e29-b3ca-bb1f28fa4888">
+                    <propertyInstance
+                      Id="995d41e2-ac17-4080-9948-e70e1105ed97"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="96770646-6357-4d1b-9b2b-7ccdb8d6e303">
+                    <propertyInstance
+                      Id="b78cc4b9-e098-4da4-9f27-c5a948530332"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="85974150-ce95-467d-a265-6dc95f54ca20">
+                    <propertyInstance
+                      Id="d93fec71-f9d5-45be-9fd3-bb555506f8ab"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="efaca7b7-3990-43b5-83b1-e8766b8db2c7">
+                    <propertyInstance
+                      Id="a4e144b1-5b07-4987-8d0f-28c52cae90ae"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cc5cb584-c496-440e-9d55-8d2103af34a7">
+                    <propertyInstance
+                      Id="029a96d8-06e1-472f-b58f-73ffe3196ab1"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ScrapeModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="0d7f13dc-ff9d-4c60-bd1f-66b25e0a4943"
+            name="FINISH_STATE"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="02799d94-0187-41b1-af6c-778cb9c7ae0b"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3DFINISH_STATE"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="506ae131-b1c3-4493-b24a-067f69f9c5fe"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="df9f71dd-9ab7-412b-a0c5-6c41ac298589">
+                    <propertyInstance
+                      Id="e3db48ef-c95a-4428-aa99-e8f566abcf6b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e32986e0-2150-42ab-a128-db1b72bf6864">
+                    <propertyInstance
+                      Id="5b7afe29-7987-44a4-8389-8264557d4744"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e1c445cd-3620-4817-9592-e4430ba976b5">
+                    <propertyInstance
+                      Id="3468f391-82e3-49cb-afc7-6501fb7f1b67"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="42671577-4b25-42a8-bdfd-71c11dee2ba3">
+                    <propertyInstance
+                      Id="f030d4d6-84a4-4d2a-a3ec-dab9f2d51d90"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2c83baf1-a422-4c50-941a-a86436f51c81">
+                    <propertyInstance
+                      Id="939a6b31-585e-4948-a7f0-9d91809c627b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ScrapeModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="18efdbe9-6f57-4081-ac15-c53cf9515be5"
+            name="ERROR_STATE"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="265c8cfe-4b31-4c90-a303-9ddcaa28c4ff"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3DERROR_STATE"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c152dac6-8fbf-4cab-8f41-f2c80f7644a8"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="560e993a-67c6-4704-85f8-5dd6c787ffaa">
+                    <propertyInstance
+                      Id="2390d1fa-756a-4b1e-b025-d4f05bdb33a2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2bea2889-9a17-442c-ae9c-02f6fe7c5c9d">
+                    <propertyInstance
+                      Id="cddda9cb-5377-48dd-a4f2-20ac359889af"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="27b93bf5-813d-4555-8e72-2d259db4549c">
+                    <propertyInstance
+                      Id="13e2b688-4d5d-4aeb-903e-e5d29e217b21"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dc7f7a7e-d60b-4239-88da-d615a8f98259">
+                    <propertyInstance
+                      Id="02bd11be-0350-49b4-927d-0a8937666702"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="031ee786-d677-42e3-8ade-850fc4ef579d">
+                    <propertyInstance
+                      Id="31179643-a338-4e46-be2e-14e18f712392"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ScrapeModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e762939a-242a-4f84-8dd2-04e6cd2cf92e"
+            name="scraperFunctions"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="03fcf605-5706-48d4-ad45-184408294093"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3DscraperFunctions"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a69226ae-c526-4a92-8e3b-a64aab992091"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3d73b81c-39c5-4a47-bc18-5ac8bec021b0">
+                    <propertyInstance
+                      Id="bc2544f3-48a4-45d4-b161-ef2424072a23"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2ed2ee67-3441-464f-987e-b1e145800ff7">
+                    <propertyInstance
+                      Id="31b78c9d-bd35-45a9-8fe7-7cbea23d2453"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dad42391-32d3-4063-b42b-8d925b4fc12d">
+                    <propertyInstance
+                      Id="7a709eb4-4b18-4296-b94a-4fff6489d1d9"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c0a84cb0-4594-43a8-b757-7a1706b33082">
+                    <propertyInstance
+                      Id="89ef348c-6096-4fcd-95f7-60c9595200f0"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4afc36f2-f6f4-4000-ab50-90a91bae83ed">
+                    <propertyInstance
+                      Id="8037aff9-5efe-4623-a285-8caebad4f4b2"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="7754a2a9-bcd6-4f53-bc36-d48c8981d15a"
+                LastKnownName="Dictionary&lt;Int32‎, Scraper‎‎.ScraperStep‎&gt;"
+                LastKnownLocation="Package5_2204.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="8166c21c-adaf-48f7-bc77-8284522299a1"
+            name="transitionTable"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="ffb33f2f-3c85-49be-afda-96736dc6311c"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3DtransitionTable"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="fdcad1ea-6d91-4a07-a067-6ab281d32bf6"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="383275f0-d62f-4bf1-8d27-61bfb1928dff">
+                    <propertyInstance
+                      Id="d37fdd87-6768-4e71-8d05-5904a9479e1d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="079560f2-46ff-4254-b541-968ce6e2e93b">
+                    <propertyInstance
+                      Id="5fec22b0-3a50-4439-8e61-5ceb7787d1e9"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2aa2c37a-c11a-4613-8244-dcb5de8a7fca">
+                    <propertyInstance
+                      Id="327e9ee7-5ceb-4b80-a7b4-271b95a0fa36"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="01252c44-3b1f-4949-9aa5-706021afd98a">
+                    <propertyInstance
+                      Id="c5d6d8fe-2bac-440d-8efb-b231ea5485e3"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a339e2e2-de65-4bbf-94eb-ff8d307b8421">
+                    <propertyInstance
+                      Id="4f2511c1-5cbe-493d-9308-2db7a5d1f8eb"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="337157b0-1143-438b-a766-13e6ba9d7281"
+                LastKnownName="Dictionary&lt;Int32‎, Int32‎&gt;"
+                LastKnownLocation="Package5_2204.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c531c356-d981-451e-9684-d5244fe72eb5"
+            name="ErrorHandler"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="6f478253-09b1-47d1-8a99-b0812cadd60f"
+                handle="viewcode://./CodeSchema_Event?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3DErrorHandler"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d9cc1291-08de-4176-9a77-e0255eb0b0f2"
+                name="event"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8cb903d7-9aa4-4a86-816c-daa0f4532bcc">
+                    <propertyInstance
+                      Id="780d2cdd-d107-430d-a81e-85e974120192"
+                      name="Add"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2e17de96-ae23-4199-8060-32ea071b7064">
+                    <propertyInstance
+                      Id="61c2125e-4f0c-4920-9e86-b7d482e8a566"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="325b6d06-2061-4ecd-a450-c11c027e594a">
+                    <propertyInstance
+                      Id="490ec0cf-ed44-49ea-a150-102c9d633e65"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7b5f244f-dfd8-470d-83b7-d3f6b445833d">
+                    <propertyInstance
+                      Id="552b4e58-0995-48a3-9fcf-364c9123c728"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6d598a5e-c8bb-423c-8924-b50844a6680f">
+                    <propertyInstance
+                      Id="2e09c7e0-f370-4820-8cce-08886c9bd76f"
+                      name="Remove"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="0ab70d20-ab2e-4cf6-8f65-4d30c0e22669"
+                LastKnownName="ScraperError"
+                LastKnownLocation="Package_2204.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="60e53a7b-8e49-46b7-a831-b6a80b4d3fca"
+            name="addNextState"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="ae6816b4-3028-4074-baf5-360eb37d9075"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3DaddNextState"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d54c04ab-1784-4017-8ca6-5d293ff9d301"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cc3fb89b-28b1-4e8b-9985-e52b5f2761e1">
+                    <propertyInstance
+                      Id="f8fcfb6f-828d-4e71-8bb7-631f242b152a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0046ab0a-d5cf-4bf9-82ad-266d54d4aa5c">
+                    <propertyInstance
+                      Id="0a5207ee-fdea-45d3-8199-a233dd7288da"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6fe1a3ab-c5f6-4165-95ed-a40b17fd6e62">
+                    <propertyInstance
+                      Id="754163f8-77ed-4635-a434-c5fddb58346b"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0d458382-a9e6-4606-b7c9-a819bb84ad83">
+                    <propertyInstance
+                      Id="5c7c663b-0042-4c5f-bdfc-ede306df6435"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="51d0726e-bb83-48ff-843e-33b33888706e">
+                    <propertyInstance
+                      Id="2030300a-f67a-48e8-af48-36843fc2b58f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ScrapeModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="d25dbf4f-4299-4c6a-a997-2d1375025c7d"
+            name="state"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="f0549401-0c0b-4334-a093-dd83169f2943"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3Dstate"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="83e4e91e-c72d-4d0b-878c-4892d50d953c"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0d12c48f-2efb-42ff-ba75-2cbb1c64800e">
+                    <propertyInstance
+                      Id="edcfba5e-9620-4937-9305-d9f3e5f7c145"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e708c0fa-d2cc-4404-baec-2e6bb2c5ebae">
+                    <propertyInstance
+                      Id="eb567c95-e7c4-4553-b745-a8d8cf202db3"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c4b69332-d8de-46ff-b7b3-cde8477ab5e6">
+                    <propertyInstance
+                      Id="8daef2ee-1f21-48d8-a5f6-7061eecf34d8"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6214c53a-4544-4261-bfda-089684dfec47">
+                    <propertyInstance
+                      Id="a2d847c4-ffda-47eb-8e42-0a73ffbabd2d"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a26ddf03-7c2c-444a-aeaf-2ead89819c14">
+                    <propertyInstance
+                      Id="6ffa115d-d5ff-4f09-a773-c7e6d2279a1c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ScrapeModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="365534b2-5d3c-41f8-96c5-aa959ac838fa"
+            name="browser"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="15d5e6eb-9409-4194-acfe-2e5e9bc3a652"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3Dbrowser"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="4b800faf-4963-44ac-9f1e-2f265da96118"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dbf525d3-93f9-4954-ab46-e2e901ac170f">
+                    <propertyInstance
+                      Id="987f89e8-c3fe-48a6-a89e-1134bb5658eb"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="04725411-bb30-4fcf-af7d-de9e794799ee">
+                    <propertyInstance
+                      Id="7ce3d1a6-7703-44a1-9186-aa8c79f13f18"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f74f6f46-0381-44fe-87a4-70b9df285089">
+                    <propertyInstance
+                      Id="a754b663-46dc-4948-982c-bdcc1516bcdb"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="62c50743-f30c-4fe4-9329-852827a46440">
+                    <propertyInstance
+                      Id="f58aa8d2-21f8-4fdf-9ee5-449f26401510"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9ca3e7bf-252a-464f-b4ac-348c0f699019">
+                    <propertyInstance
+                      Id="7313fa3c-8247-4d2f-acb1-895edeb3b053"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="5cccb814-e1b2-43e4-9c13-8aa023073d44"
+                LastKnownName="WebBrowser"
+                LastKnownLocation="Package3_2204.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="fa439151-0a74-4558-8c65-e478903872ff"
+            name="Scraper"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="faa7b21e-a618-407a-aa90-88e4da40828f"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DBoolean)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="fa9bc62a-43e7-40f9-a701-339d8974905c"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b7642690-f5eb-440a-92f7-1fe12a874485">
+                    <propertyInstance
+                      Id="33eec5a1-711e-4a99-a0d7-213e03feccd2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3f1ab147-9d50-423b-97d0-898717e74671">
+                    <propertyInstance
+                      Id="18bf1e9f-da12-47e0-9e5b-c62f89e55b7f"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="66a5f3e4-c7b7-42fa-a12c-e515d7ee489b">
+                    <propertyInstance
+                      Id="ef9cd937-94ab-45dd-9ad3-2e744a6da744"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="648888dd-b89d-4237-a839-84f0c095c095">
+                    <propertyInstance
+                      Id="d15072cc-50b0-4118-a4c1-82a6c8d4f0ea"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e2528f2f-449b-4d17-a07f-2971f362b260">
+                    <propertyInstance
+                      Id="9934d527-e49c-4d3f-956d-34fa0b5a953a"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e32d4499-39c7-4a9f-ba4a-afc855be57ce">
+                    <propertyInstance
+                      Id="252e1a78-e9f3-4b37-9a79-7d03cdd6e1d1"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3b7a0f80-b3eb-47e3-9a47-551526b877c8"
+                  name="suppressScriptErrors"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="df6102b5-8f56-45a6-92fb-ac4d6a9a8c6e"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DBoolean)]) ParameterIdentifier%3DsuppressScriptErrors"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ScrapeModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="c867fd02-059b-4b19-ba7a-9116c071b4c5"
+            name="AddScraperStep"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="e100b448-3b48-40fc-9cef-74132e25d4f7"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3D(Name%3DAddScraperStep OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3D(Name%3DScraperStep ParentType%3DScraper))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="9338ea7e-e82b-4956-9938-a9a78cae69d3"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="90a64578-1b01-47dd-96cc-efc7ddfce14f">
+                    <propertyInstance
+                      Id="7547a50c-6010-4a50-a064-3aecfe4b314d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b50459ad-67b4-46f4-ac2d-ddddebfbda10">
+                    <propertyInstance
+                      Id="14bed477-2378-4f31-806f-0a34b065c3fb"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5a0c290d-6efc-4a24-a84c-35dd2a96bfdb">
+                    <propertyInstance
+                      Id="889a55f5-d5e9-4109-85b0-ef31d498744d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d9f40e85-f4e9-4d7f-bda2-d7b084eb2da0">
+                    <propertyInstance
+                      Id="82b8178f-f888-4c3b-bd59-f31b770e1c4b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7f13fc16-79b5-47af-8fc5-d0c60411c369">
+                    <propertyInstance
+                      Id="867616c7-1023-4389-a398-e2df333be983"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ebb768f0-3e20-4f58-a25e-53a98d9edaa0">
+                    <propertyInstance
+                      Id="c9ef72e7-66b5-4875-9884-d006caf14c9b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="34f49bce-6fcd-48d4-a2fa-31a74b0d98f3"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="ScrapeModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="be12ec3e-bc83-46c8-9f07-57b1b45a9443"
+                  name="fun"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="0138cab2-e566-4625-a60b-dffcdf4a1994"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3D(Name%3DAddScraperStep OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3D(Name%3DScraperStep ParentType%3DScraper))]) ParameterIdentifier%3Dfun"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="c982ec5a-8726-41ba-9113-d6c6272463ba"
+                      LastKnownName="ScraperStep"
+                      LastKnownLocation="Package_2204.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a4540a25-e795-40c5-9e91-953a8390aba9"
+            name="Advance"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="ed692b2b-f74f-47e9-944d-20bfde663874"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3DAdvance"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="672caaf2-d22e-4b47-9e8c-232c49043ac9"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fc9b6a68-a383-4e52-b70d-42fefab07e1d">
+                    <propertyInstance
+                      Id="901b40bd-0d67-4bb8-b89e-cf7a5185ca0e"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0ffa6867-9be6-4817-8c91-066369cdf3d6">
+                    <propertyInstance
+                      Id="4e2526d9-fca6-4df1-839f-d5c2f1a34b88"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="85421fdc-1351-4e67-8407-4035e5e798d9">
+                    <propertyInstance
+                      Id="8863d940-b631-4309-a965-adbe8ce581e4"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="670348fb-72fb-4f07-a538-a72e00546121">
+                    <propertyInstance
+                      Id="38bfa37a-b170-4e08-80f8-3004662b4094"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3fa007a8-4908-44f9-9a76-78f9ea15bf14">
+                    <propertyInstance
+                      Id="ee33f514-022b-4f1b-ac14-d5f567b45add"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cd01aaa2-8d5d-4e5e-bc97-cd202b45680e">
+                    <propertyInstance
+                      Id="7aa5cfb4-0abc-4395-b7bd-45e48de0e3f0"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="a214f0bf-51dc-4bad-8764-d7a91b758742"
+            name="SetState"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="e261dda7-4c6a-4d3e-b5a9-8c85b9b911b2"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3D(Name%3DSetState OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="4e1e3e46-b246-4278-b4a9-32f2592ee3bc"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="121b245a-3097-494a-91d3-2f59fb0dcd04">
+                    <propertyInstance
+                      Id="d6c7c64d-da8b-426f-9c78-23ee986bb52c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3173fffa-b5cf-4f2d-ae65-38e8391ffc1a">
+                    <propertyInstance
+                      Id="2248ce11-e6bb-4015-9228-4c81252081d0"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="58662251-1917-4b6b-b2f0-42a375880ff2">
+                    <propertyInstance
+                      Id="f4333688-f3be-41bf-bb9e-4d118c1b8320"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dbeff3e0-9653-4740-aef9-a0fcc9b45af6">
+                    <propertyInstance
+                      Id="cf81c8ad-50ec-4028-9718-150ea9f62283"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="005780b1-ceb3-490b-a47a-f60a90b3fcfd">
+                    <propertyInstance
+                      Id="d1e70dd8-055b-4570-acb6-edb743dc35c5"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b9699bd8-1a3c-4d2e-8556-e3ebdb90a5e6">
+                    <propertyInstance
+                      Id="5aaef300-1e77-46fc-a462-84682e8706c1"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d52eab49-7a28-40d1-bcab-fbfe8c8e4ed9"
+                  name="state"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="87c5e0d8-2df1-4267-a32b-7e12f4227944"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3D(Name%3DSetState OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]) ParameterIdentifier%3Dstate"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="ScrapeModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e5af4cc1-1696-4d83-ab4d-91aea8d175cd"
+            name="SetErrorState"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="7c430e2c-bbd9-434e-953e-5dca81112a54"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3DSetErrorState"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="629957a3-5f22-4cae-b1af-4171bdd8ac1e"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="80363386-7d20-4913-8c4a-a52f6731364d">
+                    <propertyInstance
+                      Id="ce374ebb-4310-4467-9ccd-3a2186f0e1e6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="df21d7b8-b602-4ff1-ad51-0570a66c79b8">
+                    <propertyInstance
+                      Id="1c48a4cb-0a9b-4046-a4ca-a4a1dea36b99"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fcae0704-661b-4d4a-a215-2866da6f61bf">
+                    <propertyInstance
+                      Id="9ec40789-de1b-4050-9d78-2a265342c7d9"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bbf57c48-1559-4f75-b47c-6fb26a197e50">
+                    <propertyInstance
+                      Id="bd63e278-4fbc-4c39-8c7a-54353ddeb65c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="77c728a4-2426-4da5-8a58-87752073eb0b">
+                    <propertyInstance
+                      Id="39022218-3afc-4755-8e2e-e76e265a23e3"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5a9a4ffd-5c67-4f4a-8da5-da8a83fe9cd4">
+                    <propertyInstance
+                      Id="23613d4d-f0b1-4cf2-ad14-e49949b53fae"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="114fb093-7855-4f15-b25a-192132e2f8bb"
+            name="Scraper_OnDocumentCompleted"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="25196c36-ea36-4a20-9abe-794ba4025304"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3D(Name%3DScraper_OnDocumentCompleted OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.Windows.Forms.dll&quot; Namespace%3DSystem.Windows.Forms Type%3DWebBrowserDocumentCompletedEventArgs)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="5d91c7e8-3f1b-4441-b9f4-2c4413f8a03a"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b1b3907c-e76a-450c-b5f9-d9bc2636f2f2">
+                    <propertyInstance
+                      Id="c55cff7f-d6f7-4e05-91df-05d0da4bc147"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c14c83a9-558e-40e2-9a5c-66dad89544d8">
+                    <propertyInstance
+                      Id="d5ec63c8-c25f-405e-babc-c6cde2a08162"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8f8df799-a886-4d06-805e-0072809c6ceb">
+                    <propertyInstance
+                      Id="766f45f8-6212-4be7-b93f-94b8ef13cd33"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3cf7264f-eb69-4c9b-91e7-63ff70c71a49">
+                    <propertyInstance
+                      Id="bf6d813a-8290-4b7b-8437-4e2f94728ac7"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eb9b06d9-3273-45e0-a695-81d7cdfb71dc">
+                    <propertyInstance
+                      Id="83c3b446-ac32-4c03-9bed-c80be5d2a098"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e8cd11a1-85aa-4b83-9b4a-c01dd305b522">
+                    <propertyInstance
+                      Id="1f616d24-a404-465f-a6ba-1534939884a7"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8dac776d-f2ac-4456-b4fd-e41c04ba0438"
+                  name="sender"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="7439e95b-722d-4652-b4c7-b9a5a7eb0c50"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3D(Name%3DScraper_OnDocumentCompleted OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.Windows.Forms.dll&quot; Namespace%3DSystem.Windows.Forms Type%3DWebBrowserDocumentCompletedEventArgs)]) ParameterIdentifier%3Dsender"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="4cd0c385-1246-42e0-848d-b9ac7961d667"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package1_2204.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="61893c15-3e65-45a5-bf77-0c3eef21c76b"
+                  name="e"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="6b4d6b43-784f-4fbc-8e38-84b1465112cc"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3D(Name%3DScraper_OnDocumentCompleted OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.Windows.Forms.dll&quot; Namespace%3DSystem.Windows.Forms Type%3DWebBrowserDocumentCompletedEventArgs)]) ParameterIdentifier%3De"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="3e8bc555-b0e6-4862-a323-111d92e67be4"
+                      LastKnownName="WebBrowserDocumentCompletedEventArgs"
+                      LastKnownLocation="Package3_2204.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="63a7e762-b713-411b-8c0b-8c8cffc9b860"
+            name="Scrape"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="13ccd119-37cd-4314-9113-d41820220f9d"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DScraper Member%3DScrape"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="84332e92-6d3b-43d7-a9f1-1ca6182de9c8"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2f09baeb-6aec-4ec1-aea9-3746b6109973">
+                    <propertyInstance
+                      Id="a25916ad-ff1e-4078-bf26-684a8787038d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6df5a95e-b8c7-40af-aec4-736efbea28c4">
+                    <propertyInstance
+                      Id="fea11ffa-521a-4b18-a614-011b4e6d6e9e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d0a083b8-6abb-47f1-a586-c57ce72e6d88">
+                    <propertyInstance
+                      Id="435ebd8b-772f-41f2-83af-d2daa8fd6489"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3ea6ac95-737a-43e9-a2f1-e617f619e9ff">
+                    <propertyInstance
+                      Id="d0bb847b-cfb1-4db7-8b10-01fd817c9d83"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="80a49d10-794c-425a-9dd3-9b4203e5d519">
+                    <propertyInstance
+                      Id="a3aea855-580f-4111-80b3-a84d80ac084e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="639a4694-cff3-452e-8c5a-56cc482ab1f3">
+                    <propertyInstance
+                      Id="5c23c6a5-2066-45ae-a59a-7d7b129f5d60"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="c982ec5a-8726-41ba-9113-d6c6272463ba"
+        name="ScraperStep"
+        visibility="Protected"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="02a0b454-f49e-41a5-a886-8ca358ee13ce"
+            handle="viewcode://./CodeSchema_Delegate?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3D(Name%3DScraperStep ParentType%3DScraper)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="99ff36ac-1398-4a93-baa6-52dd7d9b09ae"
+            name="delegate"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fa98769e-0157-465a-8a00-387c42921166">
+                <propertyInstance
+                  Id="60b466d9-3675-4474-9c2e-31b9cdb8a39b"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d5618a12-a69b-4c2f-87e4-0e3ba81dd997">
+                <propertyInstance
+                  Id="7aea2286-2e6c-4221-bceb-28a2c75dfc37"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cf5e37eb-ab34-4f9e-9ba1-39ec85db9a62">
+                <propertyInstance
+                  Id="87d8689a-746c-4903-9bb8-ffa19ab70d4c"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="0ab70d20-ab2e-4cf6-8f65-4d30c0e22669"
+        name="ScraperError"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="841fa4e8-16c4-4181-a172-025fde397208"
+            handle="viewcode://./CodeSchema_Delegate?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3D(Name%3DScraperError ParentType%3DScraper)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="1f997c5b-09d3-42cb-9cb7-705455897243"
+            name="delegate"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bf46e8f3-8e15-44f2-a879-37862365b53c">
+                <propertyInstance
+                  Id="52cffb82-ce8e-45e2-a67f-8f810d284edf"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="13fc86d8-5fce-4ddd-8d4f-0097c05d6a43">
+                <propertyInstance
+                  Id="1c72235f-9892-4e5b-8df2-f78879d7d090"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="73dc3f5f-b256-4554-ab93-b3bfd40ca016">
+                <propertyInstance
+                  Id="b572eda4-8529-4637-8506-a30f472d9ee1"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="407d58db-923a-4fda-bcfc-d3658c2f02e2"
+        name="RedditKarmaScraper"
+        visibility="Package"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="60b54d9c-2f8a-4325-ac4d-ad40218fbac8"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="9e1e8e6c-ef0e-4d64-a452-d5efa6c328b6"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="22ada429-4765-4a20-8685-9a14dca131cc">
+                <propertyInstance
+                  Id="c319b39f-3f49-4517-b6f0-fbead1a2dc17"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e00f9c34-dec8-491a-a4a1-489551cc20bd">
+                <propertyInstance
+                  Id="e08bef88-1b6d-43ec-81ac-e72572383db7"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="73660de8-2b4f-4f68-868a-4fd5c27bda9c">
+                <propertyInstance
+                  Id="2f663c6e-fd6a-474b-9104-78facc7b774a"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d08eb771-f854-42b9-8031-5d455a49387f">
+                <propertyInstance
+                  Id="d12fef59-3985-40a4-aa14-d7dbc5801756"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="618b3850-9ee0-4456-811e-beeec9cb2fc8">
+                <propertyInstance
+                  Id="c6770914-4e96-413d-b9a9-2190f83e1377"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="bbc67f8a-697b-425b-813e-2a8ca0a22426"
+            isSubstitutable="false">
+            <classMoniker
+              Id="4e4da971-bc42-4f09-95d4-d2a07c044eb2"
+              LastKnownName="Scraper"
+              LastKnownLocation="Package_2204.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="78724c28-11ab-4c29-8e56-5f444829b2f4"
+            name="username"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="68a4c294-83b1-4a35-9d91-3ad2ac61c28d"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3Dusername"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="4e4cf80b-c16e-4979-8483-d7a8c334de58"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="18c9e7ff-0ef9-419e-9b28-472fc51b1a0e">
+                    <propertyInstance
+                      Id="985f9ffe-0103-47d7-afb3-105ce7623607"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="63ae2fcb-af27-468b-af18-e5f0203c586b">
+                    <propertyInstance
+                      Id="a87d0d0f-0487-4ec5-b301-79db83924f1b"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2199bed6-9145-4b15-8170-27cc8c8a4860">
+                    <propertyInstance
+                      Id="7a2fda87-299e-4096-adeb-accb1eed58ee"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e5310491-9954-4a8c-9f3d-37e27115b98f">
+                    <propertyInstance
+                      Id="a81567b2-e63e-4e2c-a5a3-40e36e23e182"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="30c2e455-458a-44d1-8985-9ccd87583c52">
+                    <propertyInstance
+                      Id="3b8c2842-e002-41a6-9dcd-e34a99ac40c8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ScrapeModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="0982b500-4af7-4a0d-a2a9-d47d079636d6"
+            name="password"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="a4157b65-a99b-4ade-ac58-2d6d9f111bd4"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3Dpassword"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ff35293e-4d90-4b86-94d5-5136a25e88ea"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b6aa7f7b-0dba-49a8-9d1d-b3122fdbac1f">
+                    <propertyInstance
+                      Id="868d35d6-8ca5-4d43-b87e-acd694a9f9ab"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="14c4756a-3f8a-44a8-b5f9-e58dcb2bc319">
+                    <propertyInstance
+                      Id="8971667e-fe0f-4891-b966-c26366a27694"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="28afc55e-1319-4291-9a7f-9a69a0d8caa9">
+                    <propertyInstance
+                      Id="de6b8c0a-fd23-49b1-b500-692a73fee7c6"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2491048d-88d8-4ed3-8e4a-fff09082cecd">
+                    <propertyInstance
+                      Id="65bfecc6-7dfa-4d1b-9c63-f3231f6e9aee"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f5903ade-9cde-44e2-9c4e-79c9faef7a01">
+                    <propertyInstance
+                      Id="b41f5b61-e26a-40aa-becb-8450e42ed516"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ScrapeModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="2e191f8b-1ecf-4d25-ac93-22d7f5aad132"
+            name="outputControl"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="9554de3d-8889-4fd4-ae04-961a1b85e641"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3DoutputControl"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="7f0700d8-399b-4665-971b-5d68389bd5a8"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7d618949-b6f4-4984-9bae-e0cd85879ef4">
+                    <propertyInstance
+                      Id="27a8d322-cee4-400a-8f8f-35b181ddf458"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cfcae1ef-e582-46db-940b-5319bd1bbcb1">
+                    <propertyInstance
+                      Id="e001d08f-1366-4015-9004-91f12dff4cb0"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="70471087-0406-47ad-beb5-05517d2a75e6">
+                    <propertyInstance
+                      Id="08a8d1fa-1faa-40c3-bd60-f4af6754e302"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="af720c58-7385-48dc-a2ca-dc4c01fc1b90">
+                    <propertyInstance
+                      Id="e58f0d56-9357-48d6-9acd-57e6f6e19f85"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="48400806-c66a-4292-9f15-d7016de6d9e0">
+                    <propertyInstance
+                      Id="914d011e-1219-4614-a243-4fac991cd9cb"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="411c5cb4-6723-4e2f-8c40-c1ed4e705c27"
+                LastKnownName="TextBox"
+                LastKnownLocation="Package3_2204.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="8b5e6034-6b8b-4513-877d-ad2f95a49a6e"
+            name="RedditKarmaScraper"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="84d489ae-bfb9-44fe-bc0f-170fc3fa4f10"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.Windows.Forms.dll&quot; Namespace%3DSystem.Windows.Forms Type%3DTextBox)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2fb6be0e-b0a7-4fe4-976d-ee3d705bb1ab"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3713f92c-2a47-4deb-a831-8dad450ef0fb">
+                    <propertyInstance
+                      Id="17b922cb-ecf7-4777-889a-308bf286d754"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2cb0394b-a1b2-44c3-a987-212544696b7f">
+                    <propertyInstance
+                      Id="5e40f2f5-b515-437a-9de3-bd797bd14ff3"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5ada3200-9883-4f32-b1ba-47efa831eeb4">
+                    <propertyInstance
+                      Id="df0484ea-bba2-425f-84bb-3e99c185c85e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5757f207-b9b2-4104-973a-b9d200e2ffcc">
+                    <propertyInstance
+                      Id="ab32ea78-30de-44e5-a79f-37719c8ac149"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5e8c16d0-25c6-4852-819f-3c0c502200f2">
+                    <propertyInstance
+                      Id="efde717b-5595-4cde-99fd-4c04c79a5c48"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9e78ba4d-fb73-4e91-bd40-ef7e1b8a61e8">
+                    <propertyInstance
+                      Id="554909d4-7e68-4613-be90-e413126ef9b4"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f2c25593-2395-40b2-9ce3-a6aef2cd1289"
+                  name="username"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="cdececcc-ab23-4314-b49c-2cde52510cbc"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.Windows.Forms.dll&quot; Namespace%3DSystem.Windows.Forms Type%3DTextBox)]) ParameterIdentifier%3Dusername"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ScrapeModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="299d3491-6eaa-45d9-85e4-cf7e1a418139"
+                  name="password"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="2e9ffa09-92e1-4052-89db-2acc8e4433c7"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.Windows.Forms.dll&quot; Namespace%3DSystem.Windows.Forms Type%3DTextBox)]) ParameterIdentifier%3Dpassword"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ScrapeModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="577f24dd-5d57-49de-ac7c-f8a2f38b529b"
+                  name="outputControl"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="d57ace7a-2293-4729-bb84-3b6a4cba9219"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.Windows.Forms.dll&quot; Namespace%3DSystem.Windows.Forms Type%3DTextBox)]) ParameterIdentifier%3DoutputControl"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="411c5cb4-6723-4e2f-8c40-c1ed4e705c27"
+                      LastKnownName="TextBox"
+                      LastKnownLocation="Package3_2204.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0b6f1fdf-b0f9-4e37-803c-f274c92601da"
+            name="Start"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="5d9d2466-da75-4419-a9e9-c98534a64da4"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3DStart"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2462dc63-862b-4b23-b820-f434e56c890e"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c4b31313-7513-421a-9169-72c5c23d13c6">
+                    <propertyInstance
+                      Id="7c018732-e302-495a-b317-0f60de78cb80"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c5798bcb-b052-4705-860f-192daa062d4f">
+                    <propertyInstance
+                      Id="4b18a9b9-9e0b-4728-b690-ada89e95ba03"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="815ccddc-1725-455f-a294-994c14dc2ee2">
+                    <propertyInstance
+                      Id="57906263-8502-4fd8-b82b-d0be2ea21369"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="879c559b-84d8-4aaa-bd80-150e087db3cf">
+                    <propertyInstance
+                      Id="137e0446-218b-445d-9c2b-26e78b4f65e3"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0dbcb993-125d-4fb0-afe1-8c4d804b88a6">
+                    <propertyInstance
+                      Id="e91f2759-5d73-4270-b341-d9be44b2076c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="19c1ffab-8b19-41f2-bf2f-e1c1c3d276ef">
+                    <propertyInstance
+                      Id="8bcfc78e-54db-4577-939f-03cf475fc54a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="cb720868-cd13-49d3-b2dd-3a94e889f48e"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ScrapeModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e35d9ead-eeca-48a5-a444-305946a6ea40"
+            name="Login"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="31f0a0d7-bf39-480b-9b4f-f8b4082aa8f9"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3DLogin"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="abfd9933-8ada-4c58-9617-e01f273b7b5d"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="504b930f-db56-4929-bc9c-5953dea7910a">
+                    <propertyInstance
+                      Id="4cd0a9a9-cf7e-45cf-8b65-3e72230d982f"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="399192ec-f276-4a51-8cbb-5c2f4284d54a">
+                    <propertyInstance
+                      Id="26e3aa4b-5d27-4404-9e7c-f12020da19b2"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="764dd527-59cc-435a-a607-efa030f919cb">
+                    <propertyInstance
+                      Id="c605b936-ed47-4591-87c3-8805bebd498c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="89d052db-e52b-4041-b4d4-51da86c5345d">
+                    <propertyInstance
+                      Id="12a78bd7-795e-4c3f-9078-6ec6f522e2aa"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0afdd776-f0d2-4c4a-a497-68c894f94633">
+                    <propertyInstance
+                      Id="a2744344-ea48-4086-82bc-6b2edfa81257"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cedf9c22-4083-4b7a-8116-8af492b44287">
+                    <propertyInstance
+                      Id="f3a89fd6-a911-4296-aab0-3879ff46ffa3"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a540cbe8-c6e2-47d4-9c25-4e38468d660d"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ScrapeModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="3ef7b839-1a41-496a-8ff9-67aba585c76a"
+            name="FindByClass"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="1464caf2-7d70-4ad3-b13c-654915c38027"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3D(Name%3DFindByClass OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="e09b1e04-e3b3-4dbd-8d5a-0bbf14e60183"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ac71e5a5-98b3-4157-85d7-a02328466cb6">
+                    <propertyInstance
+                      Id="48fd5ea1-920b-4b5d-ac1e-c319ffd45cdc"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="56b15244-cfff-4d0c-b669-96bb403f8852">
+                    <propertyInstance
+                      Id="00628ccb-ddef-4ae0-8460-f141363d09a8"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="40dfe05c-fb7b-4af9-8a5d-57e01347134e">
+                    <propertyInstance
+                      Id="8115dd23-6cd6-484e-b32f-a971901b4e73"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b17b2833-2025-48af-9876-9bb924aeb624">
+                    <propertyInstance
+                      Id="483d35bd-7a54-4917-8b74-03372c22f959"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ef9952d4-3e17-4675-9d20-a747015b7fae">
+                    <propertyInstance
+                      Id="baac1860-d3ee-4f7b-b077-4c3fda9f2852"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3909b546-acf5-4472-8d20-dfd9b3a9c6a0">
+                    <propertyInstance
+                      Id="f73de8c1-d209-4828-abb4-3bbded3c554a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="cd213973-8910-40e6-b158-bb4fee7f00a4"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="d6259021-a1c9-4594-9c82-f965fec7b699"
+                      LastKnownName="HtmlElement"
+                      LastKnownLocation="Package3_2204.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6f1a1f25-e8a9-4a42-95ed-ffd7c6afa3c8"
+                  name="tag"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="a4b0ae66-fec6-4d32-be0e-1caa948de1a3"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3D(Name%3DFindByClass OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dtag"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ScrapeModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="53fc8424-95fa-4cf1-ac66-0b91211f3a46"
+                  name="className"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="36c91bf9-4bdb-4df2-be85-d32e7140ee49"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3D(Name%3DFindByClass OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DclassName"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ScrapeModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="899d149b-c9ad-4bb0-b540-1128e27586d0"
+            name="FrontPage"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="3cac03ec-5e8b-46e5-832e-c95b207cacaa"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3DFrontPage"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f46321d5-a5de-4a0e-8819-540312173261"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="826b3dd8-e3cb-442b-adcf-10adf0857fdb">
+                    <propertyInstance
+                      Id="82d7aa5f-6021-4fdd-ac0f-8b5e5311c7f2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bcf720e2-5ba0-4515-ad56-8eb534d9f761">
+                    <propertyInstance
+                      Id="7bcaa2eb-400c-4184-b78e-ffcfe324cce5"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="346271d4-55ac-4321-9a31-93194f4dbc77">
+                    <propertyInstance
+                      Id="a7458b68-582e-4d29-9269-a7393c089403"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3b0bee1e-cbdf-409e-b274-9b09c70b1375">
+                    <propertyInstance
+                      Id="962da924-229e-49f5-82cb-94ca744fb9d5"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="377d1281-39ef-4441-b1de-c85409230d5c">
+                    <propertyInstance
+                      Id="d03fec7e-a983-443c-b443-32111083d1d2"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3edd817e-f94f-41dc-ac65-517058bf9ca1">
+                    <propertyInstance
+                      Id="1bb13e57-eed6-4322-883f-e174dd58d744"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="cbae0afc-5fef-4616-8e7a-03f040629c80"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ScrapeModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f649295b-6e17-4da2-94a5-de3b0216af48"
+            name="OnError"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="95edf415-0e17-43f2-ba5f-990b75e84a95"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3DOnError"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a2c710d6-6030-4b37-b85a-351fb5585fb2"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cc2561b5-ce2d-4524-b982-c665284bf2f2">
+                    <propertyInstance
+                      Id="a6217842-3084-4ffe-ab71-c5a5b4fa365c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f0aea9c2-a0d0-4045-82f3-b57318455400">
+                    <propertyInstance
+                      Id="73709080-a0a9-49b2-9a94-e173d46c10e2"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7a0ea55b-d20b-4228-8a9c-238782a39de5">
+                    <propertyInstance
+                      Id="ce2dc5bf-2487-459d-b920-b2ac73d9c7ec"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dedc5c35-dfe2-4cba-ac7d-4c5b9d4c6033">
+                    <propertyInstance
+                      Id="c6ca16ba-fac0-45cb-bcf5-c566cd000a55"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0418f64d-49fe-483c-ba92-beb9d0f2698a">
+                    <propertyInstance
+                      Id="6c078114-d040-42be-b713-40a0256c9b03"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5b2a04fa-b067-4b83-9e1b-65aaad323c95">
+                    <propertyInstance
+                      Id="cf789313-ff80-415d-ac42-20e003c22f29"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="bf1cfc63-a30d-41d6-b247-d9bda25afb14"
+            name="Scrape"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="7ef71bc7-a878-4ec2-b4a8-faabba341f76"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FOwner%2FDocuments%2FVisual Studio 2012%2FProjects%2FLoginScrape%2FLoginScrape%2Fbin%2FDebug%2FLoginScrape.exe&quot; Namespace%3DLoginScrape Type%3DRedditKarmaScraper Member%3DScrape"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="51375fb3-e116-4fc5-9f8e-ebda12454b10"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3a431223-9278-4892-9f4c-05d614e89985">
+                    <propertyInstance
+                      Id="915b6163-4125-460e-9746-ab30102f22f0"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e6c08717-80cf-488a-a4a1-f94f2166517b">
+                    <propertyInstance
+                      Id="727c63b2-194a-4757-a434-e58e383dccd1"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fd49fad0-2512-49af-aa2b-6c15656d2ca9">
+                    <propertyInstance
+                      Id="8469529f-4973-4f16-9a2a-31d9efa3d383"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6ea90fb4-6983-4645-aede-5473f4c580ef">
+                    <propertyInstance
+                      Id="31b9cd97-c673-40b5-ac11-244eb4d31325"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ac2e88c5-149e-43d3-b3fb-c5372784cc11">
+                    <propertyInstance
+                      Id="abf05222-f1d4-484b-b16d-84ca0e55f7b8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8a39b8b6-1d7a-4d2b-b300-fa5131cf3f65">
+                    <propertyInstance
+                      Id="198a7c33-1802-49bf-8747-618b7ee83344"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

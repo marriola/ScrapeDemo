@@ -1,0 +1,4 @@
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\Scraper\bin\Debug\Scraper.dll
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\Scraper\bin\Debug\Scraper.pdb
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\Scraper\obj\Debug\Scraper.dll
+C:\Users\Owner\Documents\Visual Studio 2012\Projects\LoginScrape\Scraper\obj\Debug\Scraper.pdb

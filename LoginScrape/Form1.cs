@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace LoginScrape
+{
+    public partial class Form1 : System.Windows.Forms.Form
+    {
+        ScraperManager scraperManager;
+
+        public Form1()
+        {
+            InitializeComponent();
+            try
+            {
+                scraperManager = ScraperManager.GetSharedInstance();
+                foreach (string scraper in scraperManager.ScraperNames)
+                {
+                    lstScrapers.Items.Add(scraper);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "ScraperManager threw an exception");
+            }
+        }
+
+        private void btnScrapeReddit_Click(object sender, EventArgs e)
+        {
+            Login loginForm = new Login();
+            
+            if (loginForm.ShowDialog() == DialogResult.OK)
+            {
+                txtKarma.Text = "Loading...";
+                Scraper.Scraper scraper = scraperManager.GetScraper("RedditKarmaScraper", new object[3] { loginForm.Username, loginForm.Password, txtKarma });
+                scraper.Scrape(); // scrapers gonna scrape
+            }
+            loginForm.Dispose();
+        }
+
+        private void btnScrapePSECU_Click(object sender, EventArgs e)
+        {
+            Login loginForm = new Login();
+
+            if (loginForm.ShowDialog() == DialogResult.OK)
+            {
+                listBox1.Items.Add("Loading...");
+                Scraper.Scraper scraper = scraperManager.GetScraper("PsecuAccountScraper", new object[3] { loginForm.Username, loginForm.Password, listBox1 });
+                scraper.Scrape();
+            }
+            loginForm.Dispose();
+        }
+    }
+}
