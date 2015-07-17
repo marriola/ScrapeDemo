@@ -95,7 +95,8 @@ namespace Scraper
             }
             root = nodeList[0];
 
-            // Get the root assembly path from the <externalScrapers> node if present.
+            // Get the root assembly path from the <externalScrapers> element if present.
+            // Otherwise, use the current directory.
             XmlAttribute rootPathNode = root.Attributes["root"];
             string rootPath = rootPathNode == null ? ".\\" : rootPathNode.Value;
             if (!rootPath.EndsWith("\\") && rootPath.EndsWith("/"))
@@ -106,33 +107,64 @@ namespace Scraper
             // Iterate through the child <assembly> elements
             foreach (XmlNode node in root.ChildNodes)
             {
-                if (node.Name != "assembly")
+                if (node.Name == "assembly")
+                {
+                    ReadAssemblyInformation(rootPath, node);
+                }
+                else
                 {
                     throw new FileFormatException("Invalid element " + node.Name);
                 }
+            }
+        }
 
-                // Get the path attribute
-                XmlAttribute assemblyPath = node.Attributes["path"];
-                if (assemblyPath == null || string.IsNullOrEmpty(assemblyPath.Value))
+        /// <summary>
+        /// Reads assembly information from an &lt;assembly&gt; element
+        /// </summary>
+        /// <param name="rootPath">The root path to prefix to assembly paths.</param>
+        /// <param name="node">An &lt;assembly&gt; element.</param>
+        private void ReadAssemblyInformation(string rootPath, XmlNode node)
+        {
+            // Get the path attribute
+            XmlAttribute assemblyPath = node.Attributes["path"];
+            if (assemblyPath == null || string.IsNullOrEmpty(assemblyPath.Value))
+            {
+                throw new FileFormatException("assemblyPath attribute missing from assembly element");
+            }
+
+            List<string> scraperNames;
+            ReadAssemblyClassList(node, out scraperNames);
+            if (scraperNames.Count == 0)
+            {
+                throw new FileFormatException("No classes listed for assembly " + assemblyPath.Value);
+            }
+            LoadExternalScraper(rootPath + assemblyPath.Value, scraperNames);
+        }
+
+        /// <summary>
+        /// Reads list of classes to import from an assembly specified by an &lt;assembly&gt; element.
+        /// </summary>
+        /// <param name="node">An &lt;assembly&gt; node.</param>
+        /// <param name="scraperNames">Holds the names of scrapers exported by the assembly.</param>
+        private void ReadAssemblyClassList(XmlNode node, out List<string> scraperNames)
+        {
+            scraperNames = new List<string>();
+
+            // Look in the name attribute and <class> child elements for classes exported by the assembly.
+            XmlAttribute className = node.Attributes["className"];
+            if (className != null && !string.IsNullOrEmpty(className.Value))
+            {
+                // Element has a className attribute
+                scraperNames.Add(className.Value);
+            }
+
+            // Try looking for <class> child elements.
+            XmlNodeList classNameNodes = node.SelectNodes("descendant::class");
+            if (classNameNodes.Count > 0)
+            {
+                foreach (XmlNode classNameNode in classNameNodes)
                 {
-                    throw new FileFormatException("assemblyPath attribute missing from assembly element");
-                }
-
-                List<string> scraperNames = new List<string>();
-
-                // Look in the name attribute and <class> child elements for classes exported by the assembly.
-                XmlAttribute className = node.Attributes["className"];
-                if (className != null && !string.IsNullOrEmpty(className.Value))
-                {
-                    // Element has a className attribute
-                    scraperNames.Add(className.Value);
-                }
-
-                // Try looking for <class> child elements.
-                XmlNodeList classNameNodes = node.SelectNodes("descendant::class");
-                if (classNameNodes.Count > 0)
-                {
-                    foreach (XmlNode classNameNode in classNameNodes)
+                    if (classNameNode.Name == "class")
                     {
                         className = classNameNode.Attributes["name"];
                         if (className == null || string.IsNullOrEmpty(className.Value))
@@ -141,13 +173,11 @@ namespace Scraper
                         }
                         scraperNames.Add(className.Value);
                     }
+                    else
+                    {
+                        throw new FileFormatException("Invalid element " + classNameNode.Name);
+                    }
                 }
-
-                if (scraperNames.Count == 0)
-                {
-                    throw new FileFormatException("No classes listed for assembly " + assemblyPath.Value);
-                }
-                LoadExternalScraper(rootPath + assemblyPath.Value, scraperNames);
             }
         }
 
