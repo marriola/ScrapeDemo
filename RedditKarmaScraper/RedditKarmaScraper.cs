@@ -113,7 +113,8 @@ namespace Scraper
         public override void Scrape()
         {
             ErrorHandler += OnError;
-            Advance();
+            outputControl.Text = "Loading...";
+            Start();
         }
 
     }
