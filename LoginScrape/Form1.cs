@@ -58,9 +58,15 @@ namespace LoginScrape
 
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
-                listBox1.Items.Add("Loading...");
-                Scraper.Scraper scraper = scraperManager.GetScraper("PsecuAccountScraper", new object[3] { loginForm.Username, loginForm.Password, listBox1 });
-                scraper.Scrape();
+                try
+                {
+                    Scraper.Scraper scraper = scraperManager.GetScraper("PsecuAccountScraper", new object[3] { loginForm.Username, loginForm.Password, listBox1 });
+                    scraper.Scrape();
+                }
+                catch (NullReferenceException)
+                {
+                    MessageBox.Show("Couldn't load PsecuAccountScraper");
+                }
             }
             loginForm.Dispose();
         }
