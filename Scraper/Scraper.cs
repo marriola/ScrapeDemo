@@ -1,17 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Scraper
 {
+    using NamedElementDictionary = Dictionary<string, Selector>;
+    using PageElementDictionary = Dictionary<string, HtmlElement>;
+    using ReadOnlyPageElementDictionary = ReadOnlyDictionary<string, HtmlElement>;
+
+    struct Selector
+    {
+        public string Tag;
+        public string Id;
+        public string Name;
+        public string ClassName;
+        public bool Optional;
+
+        public override string ToString()
+        {
+            return string.Format("tag={0}, id={1}, name={2}, class={3}", Tag, Id, Name, ClassName);
+        }
+    }
+    
     public abstract class Scraper
     {
+        // Static fields
         protected static int START_STATE = 0;
         private static int FINISH_STATE = unchecked((int)0xfffffffe);
         private static int ERROR_STATE = unchecked((int)0xffffffff);
+
+        // Path to the XML file that defines the page elements present at each step.
+        private string definitionFile;
+        
+        // Instance fields
+        private List<NamedElementDictionary> namedElements;
+        private PageElementDictionary pageElements;
 
         /// <summary>
         /// A function that is called whenever the site being navigated by the scraper finishes loading a new page.
@@ -21,17 +51,17 @@ namespace Scraper
         /// state, i.e. if loading more dynamically generated data from the same page, or if an error
         /// condition has been encountered.</returns>
         protected delegate bool ScraperStep();
-
         private List<ScraperStep> scraperFunctions;
         
         public delegate void ErrorFunction(string errorMessage, Exception exception);
-        
         public event ErrorFunction ScraperError;
 
         // Keeps track of the next state to add to the transition table.
         private int addNextState;
 
         private int state = START_STATE;
+
+        // Properties
         protected WebBrowser Browser
         {
             get;
@@ -50,18 +80,81 @@ namespace Scraper
             private set;
         }
 
+        protected PageElementDictionary PageElements
+        {
+            get
+            {
+                //return new ReadOnlyPageElementDictionary(pageElements);
+                return pageElements;
+            }
+        }
+
         /// <summary>
         /// Creates a new Browser instance, which is available to the subclass, and sets it to automatically
         /// advance the state of the scraper when it finishes loading a page.
         /// </summary>
         /// <param name="suppressScriptErrors">Whether to suppress script error dialogs. True by default.</param>
-        protected Scraper(bool suppressScriptErrors = true)
+        protected Scraper(string definitionFile, bool suppressScriptErrors = true)
         {
+            this.definitionFile = definitionFile;
+            
             Browser = new WebBrowser();
             Browser.ScriptErrorsSuppressed = suppressScriptErrors;
             Browser.DocumentCompleted += Scraper_OnDocumentCompleted;
             addNextState = START_STATE;
             scraperFunctions = new List<ScraperStep>();
+            ReadScraperDefinition();
+        }
+
+        private void ReadScraperDefinition()
+        {
+            namedElements = new List<NamedElementDictionary>();
+            XmlDocument doc = new XmlDocument();
+            doc.Load(definitionFile);
+
+            XmlNodeList steps = doc.SelectNodes("/scraper/step");
+            foreach (XmlNode step in steps)
+            {
+                ReadStep(step);
+            }
+        }
+
+        /// <summary>
+        /// Reads page elements from a step element into the element dictionary.
+        /// </summary>
+        /// <param name="step"></param>
+        private void ReadStep(XmlNode step)
+        {
+            var dic = new NamedElementDictionary();
+            XmlNodeList elements = step.SelectNodes("descendant::element");
+            foreach (XmlNode element in elements)
+            {
+                XmlAttribute nameAttr = element.Attributes["name"];
+                XmlAttribute optionalAttr = element.Attributes["optional"];
+                XmlAttribute tagAttr = element.Attributes["tag"];
+                XmlAttribute idAttr = element.Attributes["id"];
+                XmlAttribute clientNameAttr = element.Attributes["client-name"];
+                XmlAttribute classNameAttr = element.Attributes["class"];
+
+                string name = nameAttr == null ? "" : nameAttr.Value;
+                string tag = tagAttr == null ? "" : tagAttr.Value;
+                string id = idAttr == null ? "" : idAttr.Value;
+                string clientName = clientNameAttr == null ? "" : clientNameAttr.Value;
+                string className = classNameAttr == null ? "" : classNameAttr.Value;
+
+                bool optional = false;
+                if (optionalAttr != null)
+                {
+                    optional = optionalAttr.Value == "true" ? true : false;
+                }
+
+                if (string.IsNullOrEmpty(name))
+                {
+                    throw new FileFormatException("Unnamed element");
+                }
+                dic[name] = new Selector { Tag = tag, Id = id, Name = clientName, ClassName = className, Optional = optional };
+            }
+            namedElements.Add(dic);
         }
 
         /// <summary>
@@ -71,8 +164,71 @@ namespace Scraper
         protected int AddScraperStep(ScraperStep fun)
         {
             // Hook up the callback function to the current step.
-            scraperFunctions[addNextState] = fun;
+            scraperFunctions.Add(fun);
             return addNextState++;
+        }
+
+        /// <summary>
+        /// Retrieves the elements indicated by selectors in the scraper definition for the
+        /// current step.
+        /// </summary>
+        /// <returns></returns>
+        private void GrabPageElements()
+        {
+            pageElements = new PageElementDictionary();
+            if (state < 0 || state >= addNextState)
+                return;
+
+            // Iterate over name-selector pairs.
+            foreach (var keyValPair in namedElements[state])
+            {
+                string name = keyValPair.Key;
+                Selector selector = keyValPair.Value;
+                string tag = selector.Tag;
+
+                // Filter by tag name if specified.
+                HtmlElementCollection elementCollection;
+                if (string.IsNullOrEmpty(tag))
+                {
+                    elementCollection = Browser.Document.All;
+                }
+                else
+                {
+                    elementCollection = Browser.Document.GetElementsByTagName(tag);
+                }
+
+                // Attempt to match a page element to the selector. If found, add to the
+                // dictionary of page elements.
+
+                //Debug.WriteLine(string.Format("***** tag={0} selector {{ {1} }}", tag, selector.ToString()));
+                //Debug.WriteLine(Browser.Document.Body.OuterHtml);
+                //Debug.Indent();
+
+                bool found = false;
+                foreach (HtmlElement element in elementCollection)
+                {
+                    //Debug.WriteLine(string.Format("id={0} name={1} class={2}", element.GetAttribute("id"), element.GetAttribute("name"), element.GetAttribute("className")));
+
+                    if ((!string.IsNullOrEmpty(selector.Id) && selector.Id == element.GetAttribute("id")) ||
+                        (!string.IsNullOrEmpty(selector.Name) && selector.Name == element.GetAttribute("name")) ||
+                        (!string.IsNullOrEmpty(selector.ClassName) && selector.ClassName == element.GetAttribute("className")))
+                    {
+                        //Debug.WriteLine("FOUND!!");
+                        pageElements[name] = element;
+                        found = true;
+                        break;
+                    }
+                }
+                //Debug.Unindent();
+
+                if (!found)
+                {
+                    if (selector.Optional)
+                        pageElements[name] = null;
+                    else
+                        throw new FileFormatException("Couldn't find element " + selector.ToString());
+                }
+            }
         }
 
         /// <summary>
@@ -91,11 +247,14 @@ namespace Scraper
 
             try
             {
+                GrabPageElements();
                 if (scraperFunctions[state]())
                 {
                     // Set the completed state if we've finished the last step.
                     // Otherwise, on to the next step.
-                    state = state >= scraperFunctions.Count ? FINISH_STATE : state++;
+                    state++;
+                    if (state == scraperFunctions.Count)
+                        state = FINISH_STATE;
                 }
             }
             catch (Exception e)
@@ -127,7 +286,8 @@ namespace Scraper
             state = ERROR_STATE;
             ErrorString = errorString;
             ScraperException = exception;
-            ScraperError(errorString, exception);
+            if (ScraperError != null)
+                ScraperError(errorString, exception);
         }
 
         /// <summary>

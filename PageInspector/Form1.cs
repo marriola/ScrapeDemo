@@ -12,7 +12,8 @@ namespace SiteInspector
 {
     public partial class Form1 : Form
     {
-        const string HIGHLIGHT_STYLE = "background-color: #f88; color: black;";
+        const string HIGHLIGHT_STYLE = "background-color: orangered; color: black;";
+        static readonly string[] identifyingAttributes = new string[3] { "id", "name", "class" };
         static readonly string[] attributes = new string[] { "id", "name", "className", "href", "type" };
         static readonly HashSet<string> uiTags = new HashSet<string>()
         {
@@ -20,6 +21,9 @@ namespace SiteInspector
             "INPUT",
             "TEXTAREA",
         };
+
+        const string windowTitle = "Page inspector";
+
         HtmlDocument document;
         Pen elementHighlightPen;
         HtmlElement lastMouseOverElement = null;
@@ -31,21 +35,36 @@ namespace SiteInspector
             elementHighlightPen = new Pen(new SolidBrush(Color.Blue), 2);
         }
 
+        private void ResizeControls()
+        {
+            webBrowser1.Width = Form1.ActiveForm.Size.Width - 32;
+            webBrowser1.Height = Form1.ActiveForm.Size.Height - 80;
+            textBox1.Width = Form1.ActiveForm.Size.Width - 150;
+            txtElementPath.Width = Form1.ActiveForm.Size.Width - 90;
+            txtElementAttributes.Width = Form1.ActiveForm.Size.Width - 90;
+        }
+
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
-            webBrowser1.Width = Form1.ActiveForm.Size.Width - 42;
-            webBrowser1.Height = Form1.ActiveForm.Size.Height - 80;
+            ResizeControls();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ResizeControls();
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+            document = webBrowser1.Document;
+
             // Update browser controls
+            Form1.ActiveForm.Text = windowTitle + " " + document.Title;
             button3.Enabled = webBrowser1.CanGoBack;
             button2.Enabled = webBrowser1.CanGoForward;
             textBox1.Text = webBrowser1.Url.ToString();
 
             // Attach event handlers to each element on the page
-            document = webBrowser1.Document;
             foreach (HtmlElement element in document.All)
             {
                 element.GotFocus += InspectElement;
@@ -65,12 +84,55 @@ namespace SiteInspector
             element.Style += HIGHLIGHT_STYLE;
         }
 
+        /// <summary>
+        /// Returns the path from the root element to the indicated element.
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public string ElementPath(HtmlElement element)
+        {
+            StringBuilder sb = new StringBuilder();
+            HtmlElement ancestor = element.Parent;
+            string path = "";
+            bool firstElement = true;
+
+            while (ancestor != null)
+            {
+                // The display name of the control. If the element's Name property is blank, try
+                // its "name" attribute instead. If that's blank, try the CSS class name.
+                string elementIdentifier = string.Empty;
+                foreach (string attr in identifyingAttributes)
+                {
+                    string value = ancestor.GetAttribute(attr);
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        elementIdentifier = string.Format("{0}={1} ", attr, value);
+                        break;
+                    }
+                }
+
+                string thisElement = string.Format("{0} {1}", ancestor.TagName, elementIdentifier);
+
+                if (firstElement)
+                    firstElement = false;
+                else
+                    thisElement += "-> ";
+
+                ancestor = ancestor.Parent;
+                path = thisElement + path;
+            }
+            sb.Append(path);
+            return sb.ToString();
+        }
+
         // Returns the tag name and values of some attributes of an HTML element.
         public string ElementInfo(HtmlElement element)
         {
-            StringBuilder sb = new StringBuilder("<" + element.TagName + "> ");
+            StringBuilder sb = new StringBuilder();
             try
             {
+                sb.Append("<" + element.TagName + "> ");
+
                 foreach (string attr in attributes)
                 {
                     string value = element.GetAttribute(attr);
@@ -91,7 +153,8 @@ namespace SiteInspector
             HtmlElement element = (HtmlElement)sender;
             HighlightElement(element);
             // show tag name and values of its attributes
-            textBox2.Text = ElementInfo(element);
+            txtElementPath.Text = ElementPath(element);
+            txtElementAttributes.Text = ElementInfo(element);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -115,6 +178,22 @@ namespace SiteInspector
             {
                 webBrowser1.Navigate(textBox1.Text);
                 e.SuppressKeyPress = true;
+            }
+        }
+
+        private void chkHover_CheckedChanged(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(chkHover.Checked);
+            // Attach event handlers to each element on the page
+            if (document != null)
+            {
+                foreach (HtmlElement element in document.All)
+                {
+                    if (chkHover.Checked)
+                        element.MouseEnter += InspectElement;
+                    else
+                        element.MouseEnter -= InspectElement;
+                }
             }
         }
     }

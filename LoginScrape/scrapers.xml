@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <externalScrapers root="..\..\..\">
-  <assembly path="RedditKarmaScraper\bin\Debug\RedditKarmaScraper.dll">
+  <assembly path="RedditKarmaScraper\bin\Debug\" dll="RedditKarmaScraper.dll">
     <class name="RedditKarmaScraper"/>
   </assembly>
 
-  <assembly path="PsecuAccountScraper\bin\Debug\PsecuAccountScraper.dll" className="PsecuAccountScraper"/>
+  <assembly path="PsecuAccountScraper\bin\Debug\" dll="PsecuAccountScraper.dll" className="PsecuAccountScraper"/>
 </externalScrapers>

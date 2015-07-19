@@ -13,9 +13,11 @@ namespace Scraper
         private static string rootNamespace = "Scraper";
         private static ScraperManager sharedInstance = null;
 
-        private string scraperDefinitionFile = "scrapers.xml";
+        private string rootPath;
+        private string assemblyListFile = "scrapers.xml";
         private List<string> scraperNames;
         private Dictionary<string, Type> externalScrapers;
+        private Dictionary<string, string> paths;
 
         /// <summary>
         /// Exposes a list of names of loaded scrapers.
@@ -34,7 +36,7 @@ namespace Scraper
             externalScrapers = new Dictionary<string, Type>();
             if (!string.IsNullOrEmpty(scraperDefinitionFile))
             {
-                this.scraperDefinitionFile = scraperDefinitionFile;
+                this.assemblyListFile = scraperDefinitionFile;
             }
             LoadScrapers();
         }
@@ -75,7 +77,14 @@ namespace Scraper
                 throw new ArgumentException("Scraper class " + className + " not found");
             }
 
-            return (Scraper)Activator.CreateInstance(externalScrapers[className], args);
+            object[] argsWithDefinitionFile = new object[args.Length + 1];
+            argsWithDefinitionFile[0] = paths[className] + "scraper.xml";
+            for (int i = 0; i < args.Length; i++)
+            {
+                argsWithDefinitionFile[i + 1] = args[i];
+            }
+
+            return (Scraper)Activator.CreateInstance(externalScrapers[className], argsWithDefinitionFile);
         }
 
         /// <summary>
@@ -83,8 +92,9 @@ namespace Scraper
         /// </summary>
         private void LoadScrapers()
         {
+            paths = new Dictionary<string, string>();
             XmlDocument doc = new XmlDocument();
-            doc.Load(scraperDefinitionFile);
+            doc.Load(assemblyListFile);
 
             // Load the root element.
             XmlNode root;
@@ -98,7 +108,7 @@ namespace Scraper
             // Get the root assembly path from the <externalScrapers> element if present.
             // Otherwise, use the current directory.
             XmlAttribute rootPathNode = root.Attributes["root"];
-            string rootPath = rootPathNode == null ? ".\\" : rootPathNode.Value;
+            rootPath = rootPathNode == null ? ".\\" : rootPathNode.Value;
             if (!rootPath.EndsWith("\\") && rootPath.EndsWith("/"))
             {
                 rootPath += System.IO.Path.DirectorySeparatorChar;
@@ -129,16 +139,22 @@ namespace Scraper
             XmlAttribute assemblyPath = node.Attributes["path"];
             if (assemblyPath == null || string.IsNullOrEmpty(assemblyPath.Value))
             {
-                throw new FileFormatException("assemblyPath attribute missing from assembly element");
+                throw new FileFormatException("path attribute missing from assembly element");
+            }
+
+            XmlAttribute dllFile = node.Attributes["dll"];
+            if (dllFile == null || string.IsNullOrEmpty(dllFile.Value))
+            {
+                throw new FileFormatException("dll attribute midding from assembly element");
             }
 
             List<string> scraperNames;
-            ReadAssemblyClassList(node, out scraperNames);
+            ReadAssemblyClassList(rootPath + assemblyPath.Value, node, out scraperNames);
             if (scraperNames.Count == 0)
             {
                 throw new FileFormatException("No classes listed for assembly " + assemblyPath.Value);
             }
-            LoadExternalScraper(rootPath + assemblyPath.Value, scraperNames);
+            LoadExternalScraper(rootPath + assemblyPath.Value + dllFile.Value, scraperNames);
         }
 
         /// <summary>
@@ -146,7 +162,7 @@ namespace Scraper
         /// </summary>
         /// <param name="node">An &lt;assembly&gt; node.</param>
         /// <param name="scraperNames">Holds the names of scrapers exported by the assembly.</param>
-        private void ReadAssemblyClassList(XmlNode node, out List<string> scraperNames)
+        private void ReadAssemblyClassList(string path, XmlNode node, out List<string> scraperNames)
         {
             scraperNames = new List<string>();
 
@@ -156,6 +172,7 @@ namespace Scraper
             {
                 // Element has a className attribute
                 scraperNames.Add(className.Value);
+                paths[className.Value] = path;
             }
 
             // Try looking for <class> child elements.
@@ -172,6 +189,7 @@ namespace Scraper
                             throw new FileFormatException("Missing class name");
                         }
                         scraperNames.Add(className.Value);
+                        paths[className.Value] = path;
                     }
                     else
                     {

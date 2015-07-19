@@ -13,9 +13,10 @@ namespace Scraper
         string username, password;
         TextBox outputControl;
 
-        public RedditKarmaScraper(string username, string password, TextBox outputControl)
+        public RedditKarmaScraper(string definition, string username, string password, TextBox outputControl)
+            : base(definition, true)
         {
-            AddScraperStep(Start);
+            AddScraperStep(StartNavigation);
             AddScraperStep(Login);
             AddScraperStep(FrontPage);
 
@@ -28,9 +29,9 @@ namespace Scraper
         /// Navigates to the Reddit login page.
         /// </summary>
         /// <returns></returns>
-        private bool Start()
+        private bool StartNavigation()
         {
-            browser.Navigate("www.reddit.com/login");
+            Browser.Navigate("www.reddit.com/login");
             return true;
         }
 
@@ -41,46 +42,18 @@ namespace Scraper
         {
             try
             {
-                browser.Document.GetElementById("user_login").SetAttribute("value", username);
-                browser.Document.GetElementById("passwd_login").SetAttribute("value", password);
-                browser.Document.GetElementById("login-form").InvokeMember("submit");
+                PageElements["username"].SetAttribute("value", username);
+                PageElements["password"].SetAttribute("value", password);
+                PageElements["login"].InvokeMember("submit");
                 return true;
             }
             catch (Exception ex)
             {
                 outputControl.Text = "Error";
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
                 SetErrorState();
                 return false;
             }
-        }
-
-        /// <summary>
-        /// Searches the document for an element with a specific CSS class.
-        /// </summary>
-        /// <param name="tag">The type of element to search, or null or empty to search all elements.</param>
-        /// <param name="className">The CSS class name(s) to match.</param>
-        /// <returns>The first element that satisfies the criteria.</returns>
-        HtmlElement FindByClass(string tag, string className)
-        {
-            HtmlElementCollection elements;
-            if (string.IsNullOrEmpty(tag))
-            {
-                elements = browser.Document.All;
-            }
-            else
-            {
-                elements = browser.Document.GetElementsByTagName(tag);
-            }
-
-            foreach (HtmlElement element in elements)
-            {
-                if (element.GetAttribute("classname") == className)
-                {
-                    return element;
-                }
-            }
-            return null;
         }
 
         /// <summary>
@@ -89,22 +62,22 @@ namespace Scraper
         private bool FrontPage()
         {
             // locate <span> element that holds link karma and set the output control text
-            HtmlElement userKarmaElement = FindByClass("span", "userkarma");
+            HtmlElement userKarmaElement = PageElements["karma"];
             outputControl.Text = userKarmaElement == null ? "Not found" : userKarmaElement.InnerText;
 
             // find logout form and submit
-            HtmlElement logoutForm = FindByClass("form", "logout hover");
+            HtmlElement logoutForm = PageElements["logout"];
             if (logoutForm != null)
-            {
-                Debug.WriteLine("logging out");
                 logoutForm.InvokeMember("submit");
-            }
             return true;
         }
 
-        private void OnError()
+        private void OnError(string errorMessage, Exception exception)
         {
-            MessageBox.Show("Something bad happened!");
+            if (exception == null)
+                MessageBox.Show(errorMessage, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                MessageBox.Show(exception.Message + "\n" + exception.StackTrace, errorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>
@@ -112,7 +85,7 @@ namespace Scraper
         /// </summary>
         public override void Scrape()
         {
-            ErrorHandler += OnError;
+            ScraperError += OnError;
             outputControl.Text = "Loading...";
             Start();
         }
