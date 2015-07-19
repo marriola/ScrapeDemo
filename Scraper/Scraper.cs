@@ -22,17 +22,33 @@ namespace Scraper
         /// condition has been encountered.</returns>
         protected delegate bool ScraperStep();
 
-        private Dictionary<int, ScraperStep> scraperFunctions = new Dictionary<int, ScraperStep>();        
-        private Dictionary<int, int> transitionTable = new Dictionary<int, int>();
-
-        public delegate void ScraperError();
-        public event ScraperError ErrorHandler;
+        private List<ScraperStep> scraperFunctions;
+        
+        public delegate void ErrorFunction(string errorMessage, Exception exception);
+        
+        public event ErrorFunction ScraperError;
 
         // Keeps track of the next state to add to the transition table.
         private int addNextState;
 
         private int state = START_STATE;
-        protected WebBrowser browser;
+        protected WebBrowser Browser
+        {
+            get;
+            private set;
+        }
+
+        protected Exception ScraperException
+        {
+            get;
+            private set;
+        }
+
+        protected string ErrorString
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Creates a new Browser instance, which is available to the subclass, and sets it to automatically
@@ -41,10 +57,11 @@ namespace Scraper
         /// <param name="suppressScriptErrors">Whether to suppress script error dialogs. True by default.</param>
         protected Scraper(bool suppressScriptErrors = true)
         {
-            browser = new WebBrowser();
-            browser.ScriptErrorsSuppressed = suppressScriptErrors;
-            browser.DocumentCompleted += Scraper_OnDocumentCompleted;
+            Browser = new WebBrowser();
+            Browser.ScriptErrorsSuppressed = suppressScriptErrors;
+            Browser.DocumentCompleted += Scraper_OnDocumentCompleted;
             addNextState = START_STATE;
+            scraperFunctions = new List<ScraperStep>();
         }
 
         /// <summary>
@@ -53,17 +70,7 @@ namespace Scraper
         /// <param name="fun"></param>
         protected int AddScraperStep(ScraperStep fun)
         {
-            // Have the last step transition to this step, unless this is the first one.
-            if (addNextState != START_STATE)
-            {
-                transitionTable[addNextState - 1] = addNextState;
-            }
-
-            // Have this step transition to the finish state once completed.
-            // If we add another step, this will get changed to point to that instead.
-            transitionTable[addNextState] = FINISH_STATE;
-
-            // Finally, hook up the callback function to the current step.
+            // Hook up the callback function to the current step.
             scraperFunctions[addNextState] = fun;
             return addNextState++;
         }
@@ -74,23 +81,33 @@ namespace Scraper
         /// current state. The state of the scraper will also be advanced if that function
         /// returns true.
         /// </summary>
-        protected void Advance()
+        private void Advance()
         {
             if (state == ERROR_STATE || state == FINISH_STATE)
             {
-                browser.DocumentCompleted -= Scraper_OnDocumentCompleted;
-            }
-            else if (scraperFunctions[state]())
-            {
-                state = transitionTable[state];
+                Browser.DocumentCompleted -= Scraper_OnDocumentCompleted;
+                return;
             }
 
-            if (state == ERROR_STATE)
+            try
             {
-                ErrorHandler();
+                if (scraperFunctions[state]())
+                {
+                    // Set the completed state if we've finished the last step.
+                    // Otherwise, on to the next step.
+                    state = state >= scraperFunctions.Count ? FINISH_STATE : state++;
+                }
+            }
+            catch (Exception e)
+            {
+                SetErrorState(e);
             }
         }
 
+        /// <summary>
+        /// Sets the scraper state.
+        /// </summary>
+        /// <param name="state">A step ID number, as returned by AddScraperStep.</param>
         protected void SetState(int state)
         {
             if (state < START_STATE || state >= addNextState)
@@ -103,9 +120,35 @@ namespace Scraper
         /// <summary>
         /// Sets the scraper to the error state.
         /// </summary>
-        protected void SetErrorState()
+        /// <param name="errorString">Optional. A string describing the error condition.</param>
+        /// <param name="exception">Optional. An uncaught exception.</param>
+        protected void SetErrorState(string errorString = null, Exception exception = null)
         {
             state = ERROR_STATE;
+            ErrorString = errorString;
+            ScraperException = exception;
+            ScraperError(errorString, exception);
+        }
+
+        /// <summary>
+        /// Sets the scraper to the error state.
+        /// </summary>
+        /// <param name="exception">An uncaught exception.</param>
+        protected void SetErrorState(Exception exception)
+        {
+            SetErrorState("An uncaught exception was encountered", exception);
+        }
+
+        /// <summary>
+        /// Executes the first scraper step and starts the state machine.
+        /// </summary>
+        protected void Start()
+        {
+            if (state != START_STATE)
+            {
+                throw new InvalidOperationException("State machine is not in start state");
+            }
+            Advance();
         }
 
         /// <summary>
