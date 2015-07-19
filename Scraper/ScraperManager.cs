@@ -11,11 +11,11 @@ namespace Scraper
     public class ScraperManager
     {
         private static string rootNamespace = "Scraper";
-        public static ScraperManager sharedInstance = null;
+        private static ScraperManager sharedInstance = null;
 
-        private string m_scraperDefinitionFile = "scrapers.xml";
-        private List<string> m_scraperNames;
-        private Dictionary<string, Type> m_externalScrapers;
+        private string scraperDefinitionFile = "scrapers.xml";
+        private List<string> scraperNames;
+        private Dictionary<string, Type> externalScrapers;
 
         /// <summary>
         /// Exposes a list of names of loaded scrapers.
@@ -24,17 +24,17 @@ namespace Scraper
         {
             get
             {
-                return m_scraperNames.AsReadOnly();
+                return scraperNames.AsReadOnly();
             }
         }
 
         private ScraperManager(string scraperDefinitionFile = null)
         {
-            m_scraperNames = new List<string>();
-            m_externalScrapers = new Dictionary<string, Type>();
+            scraperNames = new List<string>();
+            externalScrapers = new Dictionary<string, Type>();
             if (!string.IsNullOrEmpty(scraperDefinitionFile))
             {
-                m_scraperDefinitionFile = scraperDefinitionFile;
+                this.scraperDefinitionFile = scraperDefinitionFile;
             }
             LoadScrapers();
         }
@@ -50,7 +50,7 @@ namespace Scraper
 
             foreach (string className in classNames)
             {
-                m_scraperNames.Add(className);
+                scraperNames.Add(className);
                 Type scraperType = assembly.GetType(rootNamespace + "." + className);
                 if (scraperType == null)
                 {
@@ -58,7 +58,7 @@ namespace Scraper
                 }
                 else
                 {
-                    m_externalScrapers[className] = scraperType;
+                    externalScrapers[className] = scraperType;
                 }
             }
         }
@@ -70,12 +70,12 @@ namespace Scraper
         /// <returns></returns>
         public Scraper GetScraper(string className, object[] args)
         {
-            if (!m_externalScrapers.ContainsKey(className))
+            if (!externalScrapers.ContainsKey(className))
             {
                 throw new ArgumentException("Scraper class " + className + " not found");
             }
 
-            return (Scraper)Activator.CreateInstance(m_externalScrapers[className], args);
+            return (Scraper)Activator.CreateInstance(externalScrapers[className], args);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Scraper
         private void LoadScrapers()
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load(m_scraperDefinitionFile);
+            doc.Load(scraperDefinitionFile);
 
             // Load the root element.
             XmlNode root;
