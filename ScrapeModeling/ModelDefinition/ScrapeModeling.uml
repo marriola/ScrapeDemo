@@ -36,6 +36,12 @@
         LastKnownName="System"
         LastKnownLocation="Package1_2204.uml" />
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="2401b31e-ffad-463c-b2c4-50669fc34995"
+        LastKnownName="Scraper"
+        LastKnownLocation="Package_1707.uml" />
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"

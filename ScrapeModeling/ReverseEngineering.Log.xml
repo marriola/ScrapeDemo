@@ -6,34 +6,10 @@
   <MessageClass Name="Error" Label="Error" Option="Show errors" />
   <MessageClass Name="Property" Label="Property" Option="Show metadata" />
   <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
-  <Message Timestamp="2015-07-16T22:05:46" Importance="High" Text="Reverse Engineering Started." />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Boolean' -  (PrimitiveType)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape' -  (Package)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Medium" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper' -  (Class)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::FindByClass' -  (Operation)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::FindByClass::className' -  (Parameter)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::FindByClass::tag' -  (Parameter)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::FrontPage' -  (Operation)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::Login' -  (Operation)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::OnError' -  (Operation)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::outputControl' -  (Property)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::password' -  (Property)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::RedditKarmaScraper' -  (Operation)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::RedditKarmaScraper::outputControl' -  (Parameter)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::RedditKarmaScraper::password' -  (Parameter)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::RedditKarmaScraper::username' -  (Parameter)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::Scrape' -  (Operation)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::Start' -  (Operation)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::RedditKarmaScraper::username' -  (Property)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::Scraper' -  (Class)   (partially reverse engineered - definition not updated) " />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::System' -  (Package)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::System::Windows' -  (Package)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::System::Windows::Forms' -  (Package)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::System::Windows::Forms::HtmlElement' -  (Class)   (partially reverse engineered - definition not updated) " />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::System::Windows::Forms::TextBox' -  (Class)   (partially reverse engineered - definition not updated) " />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'String' -  (PrimitiveType)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: ScrapeModeling::LoginScrape::RedditKarmaScraper to ScrapeModeling::LoginScrape::Scraper (Generalization)" />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="High" Text="(1) type(s) fully reverse engineered." />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="High" Text="(3) type(s) partially reverse engineered.  These types were not included in the original selection so their full definitions are not reverse engineered.  Instead, this shallow operation has simply ensured these types exist in the UML model because they are needed in order to fully describe other elements." />
-  <Message Timestamp="2015-07-16T22:05:48" Importance="High" Text="The reverse engineering operation completed with (0) error(s), and (0) warning(s)." />
+  <Message Timestamp="2015-07-18T22:41:02" Importance="High" Text="Reverse Engineering Started." />
+  <Message Timestamp="2015-07-18T22:41:03" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape' -  (Package)" />
+  <Message Timestamp="2015-07-18T22:41:03" Importance="Medium" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::ClientProgram' -  (Class)" />
+  <Message Timestamp="2015-07-18T22:41:03" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ScrapeModeling::LoginScrape::ClientProgram::Main' -  (Operation)" />
+  <Message Timestamp="2015-07-18T22:41:03" Importance="High" Text="(1) type(s) fully reverse engineered." />
+  <Message Timestamp="2015-07-18T22:41:03" Importance="High" Text="The reverse engineering operation completed with (0) error(s), and (0) warning(s)." />
 </Log>
