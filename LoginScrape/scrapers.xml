@@ -4,5 +4,5 @@
     <class name="RedditKarmaScraper"/>
   </assembly>
 
-  <assembly path="PsecuAccountScraper\bin\Debug\PsecuAccountScraper.dll" name="PsecuAccountScraper"/>
+  <assembly path="PsecuAccountScraper\bin\Debug\PsecuAccountScraper.dll" className="PsecuAccountScraper"/>
 </externalScrapers>
