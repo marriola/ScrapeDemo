@@ -18,14 +18,14 @@ namespace Scraper
     struct Selector
     {
         public string Tag;
-        public string Id;
+        public string ClientId;
         public string Name;
         public string ClassName;
         public bool Optional;
 
         public override string ToString()
         {
-            return string.Format("tag={0}, id={1}, name={2}, class={3}", Tag, Id, Name, ClassName);
+            return string.Format("tag={0}, id={1}, name={2}, class={3}", Tag, ClientId, Name, ClassName);
         }
     }
     
@@ -129,17 +129,17 @@ namespace Scraper
             XmlNodeList elements = step.SelectNodes("descendant::element");
             foreach (XmlNode element in elements)
             {
-                XmlAttribute nameAttr = element.Attributes["name"];
+                XmlAttribute idAttr = element.Attributes["id"];
                 XmlAttribute optionalAttr = element.Attributes["optional"];
                 XmlAttribute tagAttr = element.Attributes["tag"];
-                XmlAttribute idAttr = element.Attributes["id"];
-                XmlAttribute clientNameAttr = element.Attributes["client-name"];
+                XmlAttribute clientIdAttr = element.Attributes["client-id"];
+                XmlAttribute nameAttr = element.Attributes["name"];
                 XmlAttribute classNameAttr = element.Attributes["class"];
 
-                string name = nameAttr == null ? "" : nameAttr.Value;
-                string tag = tagAttr == null ? "" : tagAttr.Value;
                 string id = idAttr == null ? "" : idAttr.Value;
-                string clientName = clientNameAttr == null ? "" : clientNameAttr.Value;
+                string tag = tagAttr == null ? "" : tagAttr.Value;
+                string clientId = clientIdAttr == null ? "" : clientIdAttr.Value;
+                string name = nameAttr == null ? "" : nameAttr.Value;
                 string className = classNameAttr == null ? "" : classNameAttr.Value;
 
                 bool optional = false;
@@ -148,11 +148,11 @@ namespace Scraper
                     optional = optionalAttr.Value == "true" ? true : false;
                 }
 
-                if (string.IsNullOrEmpty(name))
+                if (string.IsNullOrEmpty(id))
                 {
                     throw new FileFormatException("Unnamed element");
                 }
-                dic[name] = new Selector { Tag = tag, Id = id, Name = clientName, ClassName = className, Optional = optional };
+                dic[id] = new Selector { Tag = tag, ClientId = clientId, Name = name, ClassName = className, Optional = optional };
             }
             namedElements.Add(dic);
         }
@@ -209,7 +209,7 @@ namespace Scraper
                 {
                     //Debug.WriteLine(string.Format("id={0} name={1} class={2}", element.GetAttribute("id"), element.GetAttribute("name"), element.GetAttribute("className")));
 
-                    if ((!string.IsNullOrEmpty(selector.Id) && selector.Id == element.GetAttribute("id")) ||
+                    if ((!string.IsNullOrEmpty(selector.ClientId) && selector.ClientId == element.GetAttribute("id")) ||
                         (!string.IsNullOrEmpty(selector.Name) && selector.Name == element.GetAttribute("name")) ||
                         (!string.IsNullOrEmpty(selector.ClassName) && selector.ClassName == element.GetAttribute("className")))
                     {
