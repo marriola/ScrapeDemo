@@ -15,6 +15,7 @@ namespace ScraperDesigner
     {
         internal List<ScraperStep> steps;
 
+        const string SCRAPER_FILTER = "Scraper definitions (*.xml)|*.xml|All files|*";
         const string HIGHLIGHT_STYLE = "background-color: orangered; color: black;";
         static readonly string[] identifyingAttributes = new string[3] { "id", "name", "class" };
         static readonly string[] attributes = new string[] { "id", "name", "className", "href", "type" };
@@ -155,15 +156,17 @@ namespace ScraperDesigner
 
         private void ElementClicked(object sender, EventArgs e)
         {
-            if (!chkSelectionMode.Checked || steps.Count == 0)
+            HtmlElement element = lastMouseOverElement; //(HtmlElement)sender;
+            System.Diagnostics.Debug.WriteLine(ElementInfo(element) + " // " + ElementInfo(lastMouseOverElement));
+            if (!chkSelectionMode.Checked || steps.Count == 0 || element != lastMouseOverElement)
                 return;
 
-            HtmlElement element = (HtmlElement)sender;
             HighlightElement(element);
 
             // Prompt for a name for the new element
             string elementName;
             var elementNameDialog = new ElementNameDialog();
+            elementNameDialog.txtElementInfo.Text = ElementInfo(element);
             if (elementNameDialog.ShowDialog() == DialogResult.OK)
             {
                 elementName = elementNameDialog.txtElementName.Text;
@@ -264,58 +267,43 @@ namespace ScraperDesigner
 
         private void SaveScraper()
         {
-            var dlgSave = new SaveFileDialog();
-            dlgSave.Filter = "Scraper definitions (*.xml)|*.xml|All files|*";
-            if (dlgSave.ShowDialog() == DialogResult.Cancel)
-                return;
-
-            XmlWriterSettings settings = new XmlWriterSettings()
+            var dlgSave = new SaveFileDialog()
             {
-                Indent = true
+                Filter = SCRAPER_FILTER
             };
-            XmlWriter writer = XmlWriter.Create(dlgSave.FileName, settings);
 
-            writer.WriteStartElement("scraper");
-            foreach (var step in steps)
+            if (dlgSave.ShowDialog() == DialogResult.OK)
             {
-                writer.WriteStartElement("step");
-                writer.WriteAttributeString("url", step.Url);
-                foreach (var element in step.Elements)
-                {
-                    WriteElement(writer, element);
-                }
-                writer.WriteEndElement();
+                ScraperDefinitionWriter.Write(dlgSave.FileName, steps);
             }
-            writer.WriteEndElement();
-            writer.Close();
+            dlgSave.Dispose();
         }
 
-        private void WriteElement(XmlWriter writer, ElementDefinition element)
+        private void LoadScraper()
         {
-            writer.WriteStartElement("element");
-            writer.WriteAttributeString("id", element.Id);
-
-            var values = new Tuple<string, string>[]
-                {
-                    Tuple.Create("tag", element.ElementSelector.Tag),
-                    Tuple.Create("client-id", element.ElementSelector.ClientId),
-                    Tuple.Create("name", element.ElementSelector.Name),
-                    Tuple.Create("class", element.ElementSelector.ClassName)
-                };
-
-            foreach (var value in values)
+            var dlgOpen = new OpenFileDialog()
             {
-                if (!string.IsNullOrEmpty(value.Item2))
-                {
-                    writer.WriteAttributeString(value.Item1, value.Item2);
-                }
-            }
-            writer.WriteEndElement();
-        }
+                Filter = SCRAPER_FILTER
+            };
 
+            if (dlgOpen.ShowDialog() == DialogResult.OK)
+            {
+                Scraper.ScraperDefinitionReader reader = new Scraper.ScraperDefinitionReader(dlgOpen.FileName);
+                reader.ReadScraperDefinition();
+                steps.Clear();
+                //foreach (var dic in reader.n
+            }
+            dlgOpen.Dispose();
+        }
+            
         private void itmSave_Click(object sender, EventArgs e)
         {
             SaveScraper();
+        }
+
+        private void itmOpen_Click(object sender, EventArgs e)
+        {
+            LoadScraper();
         }
     }
 }

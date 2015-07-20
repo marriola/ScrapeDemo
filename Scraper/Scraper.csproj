@@ -43,7 +43,14 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scraper.cs" />
+    <Compile Include="ScraperDefinitionReader.cs" />
     <Compile Include="ScraperManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PageInspector\ScraperDesigner.csproj">
+      <Project>{bcf252db-9131-4b38-8106-087cd5488a33}</Project>
+      <Name>ScraperDesigner</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

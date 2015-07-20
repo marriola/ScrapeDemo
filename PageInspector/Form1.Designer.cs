@@ -214,6 +214,7 @@
             this.itmOpen.Name = "itmOpen";
             this.itmOpen.Size = new System.Drawing.Size(152, 22);
             this.itmOpen.Text = "&Open";
+            this.itmOpen.Click += new System.EventHandler(this.itmOpen_Click);
             // 
             // DesignerWindow
             // 
