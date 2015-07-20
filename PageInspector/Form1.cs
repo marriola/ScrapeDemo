@@ -42,11 +42,11 @@ namespace ScraperDesigner
 
         private void ResizeControls()
         {
-            webBrowser1.Width = DesignerWindow.ActiveForm.Size.Width - 32;
-            webBrowser1.Height = DesignerWindow.ActiveForm.Size.Height - 160;
-            txtAddress.Width = DesignerWindow.ActiveForm.Size.Width - 150;
-            txtElementPath.Width = DesignerWindow.ActiveForm.Size.Width - 90;
-            txtElementAttributes.Width = DesignerWindow.ActiveForm.Size.Width - 90;
+            webBrowser1.Width = this.Size.Width - 32;
+            webBrowser1.Height = this.Size.Height - 160;
+            txtAddress.Width = this.Size.Width - 150;
+            txtElementPath.Width = this.Size.Width - 90;
+            txtElementAttributes.Width = this.Size.Width - 90;
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace ScraperDesigner
             document = webBrowser1.Document;
 
             // Update browser controls
-            DesignerWindow.ActiveForm.Text = windowTitle + " - " + document.Title;
+            this.Text = windowTitle + " - " + document.Title;
             btnBack.Enabled = webBrowser1.CanGoBack;
             btnForward.Enabled = webBrowser1.CanGoForward;
             txtAddress.Text = webBrowser1.Url.ToString();
@@ -154,7 +154,7 @@ namespace ScraperDesigner
 
         private void ElementClicked(object sender, EventArgs e)
         {
-            if (steps.Count == 0)
+            if (!chkSelectionMode.Checked || steps.Count == 0)
                 return;
 
             HtmlElement element = (HtmlElement)sender;
@@ -198,6 +198,9 @@ namespace ScraperDesigner
         // Highlights an element and displays info on it on mouseover or click.
         private void InspectElement(object sender, EventArgs e)
         {
+            if (!chkSelectionMode.Checked)
+                return;
+
             HtmlElement element = (HtmlElement)sender;
             HighlightElement(element);
 
@@ -243,6 +246,18 @@ namespace ScraperDesigner
                     else
                         element.MouseEnter -= InspectElement;
                 }
+            }
+        }
+
+        private void chkSelectionMode_CheckedChanged(object sender, EventArgs e)
+        {
+            // Unhighlight the currently highlighted element, if any, when the "Selection mode"
+            // checkbox is unchecked.
+            if (!chkSelectionMode.Checked && lastMouseOverElement != null)
+            {
+                lastMouseOverElement.Style = lastStyle;
+                lastStyle = "";
+                lastMouseOverElement = null;
             }
         }
     }

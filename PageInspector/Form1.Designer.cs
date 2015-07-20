@@ -40,6 +40,7 @@
             this.chkHoverDisplay = new System.Windows.Forms.CheckBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.btnBack = new System.Windows.Forms.Button();
+            this.chkSelectionMode = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtAddress
@@ -76,7 +77,7 @@
             this.chkSuppressScriptErrors.Name = "chkSuppressScriptErrors";
             this.chkSuppressScriptErrors.Size = new System.Drawing.Size(127, 17);
             this.chkSuppressScriptErrors.TabIndex = 7;
-            this.chkSuppressScriptErrors.Text = "&Suppress script errors";
+            this.chkSuppressScriptErrors.Text = "Suppress script &errors";
             this.chkSuppressScriptErrors.UseVisualStyleBackColor = true;
             this.chkSuppressScriptErrors.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -154,11 +155,25 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // chkSelectionMode
+            // 
+            this.chkSelectionMode.AutoSize = true;
+            this.chkSelectionMode.Checked = true;
+            this.chkSelectionMode.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkSelectionMode.Location = new System.Drawing.Point(353, 39);
+            this.chkSelectionMode.Name = "chkSelectionMode";
+            this.chkSelectionMode.Size = new System.Drawing.Size(99, 17);
+            this.chkSelectionMode.TabIndex = 16;
+            this.chkSelectionMode.Text = "&Selection mode";
+            this.chkSelectionMode.UseVisualStyleBackColor = true;
+            this.chkSelectionMode.CheckedChanged += new System.EventHandler(this.chkSelectionMode_CheckedChanged);
+            // 
             // DesignerWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 468);
+            this.Controls.Add(this.chkSelectionMode);
             this.Controls.Add(this.chkHoverDisplay);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnForward);
@@ -193,6 +208,7 @@
         private System.Windows.Forms.CheckBox chkHoverDisplay;
         private System.Windows.Forms.Button btnBack;
         internal System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.CheckBox chkSelectionMode;
     }
 }
 
