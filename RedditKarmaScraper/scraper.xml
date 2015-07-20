@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+A sample scraper definition.
+
+A scraper is conceptualized as a series of steps, which are represented by <step> nodes. The id
+property corresponds to the scraper step ID as returned by AddScraperStep.
+
+A step corresponds to a web page, so the <step> element contains a list of HTML elements, represented
+by the <element> element. <element> has a "name" attribute, which is the name exposed to the scraper,
+and a series of attributes "id", "name" and "class" which are matched the target element on the page.
+If the element may or may not be present on the page, its "optional" attribute should be set to "true."
+Otherwise, the scraper will throw an exception if that element is not present.
+-->
+
+<scraper>
+  <step>
+    <!-- login step -->
+  </step>
+  
+  <step>
+    <element id="login" client-id="login-form"/>
+    <element id="username" client-id="user_login"/>
+    <element id="password" client-id="passwd_login"/>
+  </step>
+
+  <step>
+    <element id="karma" optional="true" tag="span" class="userkarma"/>
+    <element id="logout" optional="true" class="logout hover"/>
+  </step>
+</scraper>
