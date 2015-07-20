@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace ScraperDesigner
 {
@@ -192,7 +193,7 @@ namespace ScraperDesigner
                 ElementSelector = selector
             };
             int stepsIndex = stepsDialog.lstSteps.SelectedIndex;
-            steps[stepsIndex].elements.Insert(elementsIndex + 1, definition);
+            steps[stepsIndex].Elements.Insert(elementsIndex + 1, definition);
         }
         
         // Highlights an element and displays info on it on mouseover or click.
@@ -259,6 +260,62 @@ namespace ScraperDesigner
                 lastStyle = "";
                 lastMouseOverElement = null;
             }
+        }
+
+        private void SaveScraper()
+        {
+            var dlgSave = new SaveFileDialog();
+            dlgSave.Filter = "Scraper definitions (*.xml)|*.xml|All files|*";
+            if (dlgSave.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            XmlWriterSettings settings = new XmlWriterSettings()
+            {
+                Indent = true
+            };
+            XmlWriter writer = XmlWriter.Create(dlgSave.FileName, settings);
+
+            writer.WriteStartElement("scraper");
+            foreach (var step in steps)
+            {
+                writer.WriteStartElement("step");
+                writer.WriteAttributeString("url", step.Url);
+                foreach (var element in step.Elements)
+                {
+                    WriteElement(writer, element);
+                }
+                writer.WriteEndElement();
+            }
+            writer.WriteEndElement();
+            writer.Close();
+        }
+
+        private void WriteElement(XmlWriter writer, ElementDefinition element)
+        {
+            writer.WriteStartElement("element");
+            writer.WriteAttributeString("id", element.Id);
+
+            var values = new Tuple<string, string>[]
+                {
+                    Tuple.Create("tag", element.ElementSelector.Tag),
+                    Tuple.Create("client-id", element.ElementSelector.ClientId),
+                    Tuple.Create("name", element.ElementSelector.Name),
+                    Tuple.Create("class", element.ElementSelector.ClassName)
+                };
+
+            foreach (var value in values)
+            {
+                if (!string.IsNullOrEmpty(value.Item2))
+                {
+                    writer.WriteAttributeString(value.Item1, value.Item2);
+                }
+            }
+            writer.WriteEndElement();
+        }
+
+        private void itmSave_Click(object sender, EventArgs e)
+        {
+            SaveScraper();
         }
     }
 }
