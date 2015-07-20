@@ -36,7 +36,7 @@ namespace SiteInspector
         private void ResizeControls()
         {
             webBrowser1.Width = Form1.ActiveForm.Size.Width - 32;
-            webBrowser1.Height = Form1.ActiveForm.Size.Height - 155;
+            webBrowser1.Height = Form1.ActiveForm.Size.Height - 160;
             txtAddress.Width = Form1.ActiveForm.Size.Width - 150;
             txtElementPath.Width = Form1.ActiveForm.Size.Width - 90;
             txtElementAttributes.Width = Form1.ActiveForm.Size.Width - 90;
