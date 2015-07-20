@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedditKarmaScraper", "Reddi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsecuAccountScraper", "PsecuAccountScraper\PsecuAccountScraper.csproj", "{2F67252B-17D9-4419-AA6A-C9DD2659E481}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageInspector", "PageInspector\PageInspector.csproj", "{BCF252DB-9131-4B38-8106-087CD5488A33}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScraperDesigner", "PageInspector\ScraperDesigner.csproj", "{BCF252DB-9131-4B38-8106-087CD5488A33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

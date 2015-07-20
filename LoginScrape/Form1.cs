@@ -19,18 +19,18 @@ namespace LoginScrape
         public Form1()
         {
             InitializeComponent();
-            //try
-            //{
+            try
+            {
                 scraperManager = ScraperManager.GetSharedInstance();
                 foreach (string scraper in scraperManager.ScraperNames)
                 {
                     lstScrapers.Items.Add(scraper);
                 }
-            //}
-            //catch (Exception e)
-            //{
-            //    MessageBox.Show(e.Message, "ScraperManager threw an exception");
-            //}
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "ScraperManager threw an exception");
+            }
         }
 
         private void btnScrapeReddit_Click(object sender, EventArgs e)

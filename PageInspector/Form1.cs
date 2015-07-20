@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SiteInspector
+namespace ScraperDesigner
 {
-    public partial class Form1 : Form
+    public partial class DesignerWindow : Form
     {
+        internal List<ScraperStep> steps;
+
         const string HIGHLIGHT_STYLE = "background-color: orangered; color: black;";
         static readonly string[] identifyingAttributes = new string[3] { "id", "name", "class" };
         static readonly string[] attributes = new string[] { "id", "name", "className", "href", "type" };
@@ -28,18 +30,23 @@ namespace SiteInspector
         HtmlElement lastMouseOverElement = null;
         string lastStyle = string.Empty;
 
-        public Form1()
+        StepsForm stepsDialog;
+
+        public DesignerWindow()
         {
             InitializeComponent();
+            steps = new List<ScraperStep>();
+            stepsDialog = new StepsForm(this);
+            stepsDialog.Show();
         }
 
         private void ResizeControls()
         {
-            webBrowser1.Width = Form1.ActiveForm.Size.Width - 32;
-            webBrowser1.Height = Form1.ActiveForm.Size.Height - 160;
-            txtAddress.Width = Form1.ActiveForm.Size.Width - 150;
-            txtElementPath.Width = Form1.ActiveForm.Size.Width - 90;
-            txtElementAttributes.Width = Form1.ActiveForm.Size.Width - 90;
+            webBrowser1.Width = DesignerWindow.ActiveForm.Size.Width - 32;
+            webBrowser1.Height = DesignerWindow.ActiveForm.Size.Height - 160;
+            txtAddress.Width = DesignerWindow.ActiveForm.Size.Width - 150;
+            txtElementPath.Width = DesignerWindow.ActiveForm.Size.Width - 90;
+            txtElementAttributes.Width = DesignerWindow.ActiveForm.Size.Width - 90;
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
@@ -57,7 +64,7 @@ namespace SiteInspector
             document = webBrowser1.Document;
 
             // Update browser controls
-            Form1.ActiveForm.Text = windowTitle + " - " + document.Title;
+            DesignerWindow.ActiveForm.Text = windowTitle + " - " + document.Title;
             btnBack.Enabled = webBrowser1.CanGoBack;
             btnForward.Enabled = webBrowser1.CanGoForward;
             txtAddress.Text = webBrowser1.Url.ToString();
@@ -65,21 +72,9 @@ namespace SiteInspector
             // Attach event handlers to each element on the page
             foreach (HtmlElement element in document.All)
             {
-                element.GotFocus += InspectElement;
+                element.GotFocus += ElementClicked;
                 element.MouseEnter += InspectElement;
             }
-        }
-
-        // Apply the highlight style to an element.
-        private void HighlightElement(HtmlElement element)
-        {
-            // Unhighlight last control moused over
-            if (lastMouseOverElement != null)
-                lastMouseOverElement.Style = lastStyle;
-
-            lastMouseOverElement = element;
-            lastStyle = element.Style;
-            element.Style += HIGHLIGHT_STYLE;
         }
 
         /// <summary>
@@ -145,6 +140,61 @@ namespace SiteInspector
             return sb.ToString();
         }
 
+        // Apply the highlight style to an element.
+        internal void HighlightElement(HtmlElement element)
+        {
+            // Unhighlight last control moused over
+            if (lastMouseOverElement != null)
+                lastMouseOverElement.Style = lastStyle;
+
+            lastMouseOverElement = element;
+            lastStyle = element.Style;
+            element.Style += HIGHLIGHT_STYLE;
+        }
+
+        private void ElementClicked(object sender, EventArgs e)
+        {
+            if (steps.Count == 0)
+                return;
+
+            HtmlElement element = (HtmlElement)sender;
+            HighlightElement(element);
+
+            // Prompt for a name for the new element
+            string elementName;
+            var elementNameDialog = new ElementNameDialog();
+            if (elementNameDialog.ShowDialog() == DialogResult.OK)
+            {
+                elementName = elementNameDialog.txtElementName.Text;
+            }
+            else
+            {
+                return;
+            }
+
+            // Add to listbox and elements collection.
+            int elementsIndex = stepsDialog.lstElements.SelectedIndex;
+            stepsDialog.lstElements.Items.Insert(elementsIndex + 1, elementName);
+            stepsDialog.lstElements.SelectedIndex = elementsIndex + 1;
+
+            // Add the element to our list as well.
+            Selector selector = new Selector()
+                {
+                    Tag = element.TagName,
+                    ClientId = element.GetAttribute("id"),
+                    Name = element.GetAttribute("name"),
+                    ClassName = element.GetAttribute("className")
+                };
+            var definition = new ElementDefinition()
+            {
+                Element = element,
+                Id = elementName,
+                ElementSelector = selector
+            };
+            int stepsIndex = stepsDialog.lstSteps.SelectedIndex;
+            steps[stepsIndex].elements.Insert(elementsIndex + 1, definition);
+        }
+        
         // Highlights an element and displays info on it on mouseover or click.
         private void InspectElement(object sender, EventArgs e)
         {

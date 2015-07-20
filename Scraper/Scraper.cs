@@ -80,12 +80,11 @@ namespace Scraper
             private set;
         }
 
-        protected PageElementDictionary PageElements
+        protected ReadOnlyPageElementDictionary PageElements
         {
             get
             {
-                //return new ReadOnlyPageElementDictionary(pageElements);
-                return pageElements;
+                return new ReadOnlyPageElementDictionary(pageElements);
             }
         }
 

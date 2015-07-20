@@ -1,6 +1,6 @@
-﻿namespace SiteInspector
+﻿namespace ScraperDesigner
 {
-    partial class Form1
+    partial class DesignerWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DesignerWindow));
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtElementAttributes = new System.Windows.Forms.TextBox();
@@ -154,7 +154,7 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // Form1
+            // DesignerWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -170,7 +170,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.txtAddress);
-            this.Name = "Form1";
+            this.Name = "DesignerWindow";
             this.Text = "Page element inspector";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -191,8 +191,8 @@
         private System.Windows.Forms.TextBox txtElementPath;
         private System.Windows.Forms.Button btnForward;
         private System.Windows.Forms.CheckBox chkHoverDisplay;
-        private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button btnBack;
+        internal System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
 
