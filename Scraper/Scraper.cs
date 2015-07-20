@@ -28,7 +28,7 @@ namespace Scraper
             return string.Format("tag={0}, id={1}, name={2}, class={3}", Tag, ClientId, Name, ClassName);
         }
     }
-    
+
     public abstract class Scraper
     {
         // Static fields

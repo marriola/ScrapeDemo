@@ -25,21 +25,19 @@ namespace SiteInspector
         const string windowTitle = "Page inspector";
 
         HtmlDocument document;
-        Pen elementHighlightPen;
         HtmlElement lastMouseOverElement = null;
         string lastStyle = string.Empty;
 
         public Form1()
         {
             InitializeComponent();
-            elementHighlightPen = new Pen(new SolidBrush(Color.Blue), 2);
         }
 
         private void ResizeControls()
         {
             webBrowser1.Width = Form1.ActiveForm.Size.Width - 32;
-            webBrowser1.Height = Form1.ActiveForm.Size.Height - 80;
-            textBox1.Width = Form1.ActiveForm.Size.Width - 150;
+            webBrowser1.Height = Form1.ActiveForm.Size.Height - 155;
+            txtAddress.Width = Form1.ActiveForm.Size.Width - 150;
             txtElementPath.Width = Form1.ActiveForm.Size.Width - 90;
             txtElementAttributes.Width = Form1.ActiveForm.Size.Width - 90;
         }
@@ -59,10 +57,10 @@ namespace SiteInspector
             document = webBrowser1.Document;
 
             // Update browser controls
-            Form1.ActiveForm.Text = windowTitle + " " + document.Title;
-            button3.Enabled = webBrowser1.CanGoBack;
-            button2.Enabled = webBrowser1.CanGoForward;
-            textBox1.Text = webBrowser1.Url.ToString();
+            Form1.ActiveForm.Text = windowTitle + " - " + document.Title;
+            btnBack.Enabled = webBrowser1.CanGoBack;
+            btnForward.Enabled = webBrowser1.CanGoForward;
+            txtAddress.Text = webBrowser1.Url.ToString();
 
             // Attach event handlers to each element on the page
             foreach (HtmlElement element in document.All)
@@ -142,7 +140,7 @@ namespace SiteInspector
             }
             catch (UnauthorizedAccessException)
             {
-                sb.Append("#");
+                sb.Append("<<unauthorized access exception>>");
             }
             return sb.ToString();
         }
@@ -152,44 +150,45 @@ namespace SiteInspector
         {
             HtmlElement element = (HtmlElement)sender;
             HighlightElement(element);
+
             // show tag name and values of its attributes
             txtElementPath.Text = ElementPath(element);
             txtElementAttributes.Text = ElementInfo(element);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
             webBrowser1.GoBack();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnForward_Click(object sender, EventArgs e)
         {
             webBrowser1.GoForward();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            webBrowser1.ScriptErrorsSuppressed = checkBox1.Checked;
+            webBrowser1.ScriptErrorsSuppressed = chkSuppressScriptErrors.Checked;
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                webBrowser1.Navigate(textBox1.Text);
+                webBrowser1.Navigate(txtAddress.Text);
                 e.SuppressKeyPress = true;
             }
         }
 
         private void chkHover_CheckedChanged(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(chkHover.Checked);
+            System.Diagnostics.Debug.WriteLine(chkHoverDisplay.Checked);
             // Attach event handlers to each element on the page
             if (document != null)
             {
                 foreach (HtmlElement element in document.All)
                 {
-                    if (chkHover.Checked)
+                    if (chkHoverDisplay.Checked)
                         element.MouseEnter += InspectElement;
                     else
                         element.MouseEnter -= InspectElement;
