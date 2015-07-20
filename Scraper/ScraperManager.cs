@@ -177,24 +177,21 @@ namespace Scraper
 
             // Try looking for <class> child elements.
             XmlNodeList classNameNodes = node.SelectNodes("descendant::class");
-            if (classNameNodes.Count > 0)
+            foreach (XmlNode classNameNode in classNameNodes)
             {
-                foreach (XmlNode classNameNode in classNameNodes)
+                if (classNameNode.Name == "class")
                 {
-                    if (classNameNode.Name == "class")
+                    className = classNameNode.Attributes["name"];
+                    if (className == null || string.IsNullOrEmpty(className.Value))
                     {
-                        className = classNameNode.Attributes["name"];
-                        if (className == null || string.IsNullOrEmpty(className.Value))
-                        {
-                            throw new FileFormatException("Missing class name");
-                        }
-                        scraperNames.Add(className.Value);
-                        paths[className.Value] = path;
+                        throw new FileFormatException("Missing class name");
                     }
-                    else
-                    {
-                        throw new FileFormatException("Invalid element " + classNameNode.Name);
-                    }
+                    scraperNames.Add(className.Value);
+                    paths[className.Value] = path;
+                }
+                else
+                {
+                    throw new FileFormatException("Invalid element " + classNameNode.Name);
                 }
             }
         }
