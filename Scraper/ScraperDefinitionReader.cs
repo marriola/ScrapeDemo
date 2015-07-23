@@ -41,7 +41,7 @@ namespace Scraper
         /// <param name="step"></param>
         public void ReadStep(XmlNode step)
         {
-            var dic = new Dictionary<string, Selector>();
+            var dic = new Dictionary<string, ScraperDesigner.Selector>();
             XmlNodeList elements = step.SelectNodes("descendant::element");
             foreach (XmlNode element in elements)
             {
@@ -68,14 +68,8 @@ namespace Scraper
                 {
                     throw new FileFormatException("Unnamed element");
                 }
-                dic[id] = new Selector
-                {
-                    Tag = tag,
-                    ClientId = clientId,
-                    Name = name,
-                    ClassName = className,
-                    Optional = optional
-                };
+                // TODO: fix....
+                //dic[id] = new ScraperDesigner.Selector(tag, clientId);
             }
             namedElements.Add(dic);
         }
