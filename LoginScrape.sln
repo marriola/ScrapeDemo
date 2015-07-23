@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginScrape", "LoginScrape\LoginScrape.csproj", "{66D28D26-1E8C-4C03-A6E2-7414745F835F}"
 EndProject
-Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ScrapeModeling", "ScrapeModeling\ScrapeModeling.modelproj", "{FBF0491A-1394-4988-8BAD-6B2FE95EEE04}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scraper", "Scraper\Scraper.csproj", "{4CFEAEFB-C8AE-46A0-8440-96E945903197}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedditKarmaScraper", "RedditKarmaScraper\RedditKarmaScraper.csproj", "{A73E1C11-5F58-4991-B75B-28081453327C}"
@@ -12,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsecuAccountScraper", "PsecuAccountScraper\PsecuAccountScraper.csproj", "{2F67252B-17D9-4419-AA6A-C9DD2659E481}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScraperDesigner", "PageInspector\ScraperDesigner.csproj", "{BCF252DB-9131-4B38-8106-087CD5488A33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignerTests", "DesignerTests\DesignerTests.csproj", "{35940BD4-C56A-4BE5-8D15-5ACB1F80F681}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		{66D28D26-1E8C-4C03-A6E2-7414745F835F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66D28D26-1E8C-4C03-A6E2-7414745F835F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66D28D26-1E8C-4C03-A6E2-7414745F835F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FBF0491A-1394-4988-8BAD-6B2FE95EEE04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBF0491A-1394-4988-8BAD-6B2FE95EEE04}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBF0491A-1394-4988-8BAD-6B2FE95EEE04}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBF0491A-1394-4988-8BAD-6B2FE95EEE04}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4CFEAEFB-C8AE-46A0-8440-96E945903197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4CFEAEFB-C8AE-46A0-8440-96E945903197}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CFEAEFB-C8AE-46A0-8440-96E945903197}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,6 +39,10 @@ Global
 		{BCF252DB-9131-4B38-8106-087CD5488A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCF252DB-9131-4B38-8106-087CD5488A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCF252DB-9131-4B38-8106-087CD5488A33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35940BD4-C56A-4BE5-8D15-5ACB1F80F681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35940BD4-C56A-4BE5-8D15-5ACB1F80F681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35940BD4-C56A-4BE5-8D15-5ACB1F80F681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35940BD4-C56A-4BE5-8D15-5ACB1F80F681}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
