@@ -11,7 +11,7 @@ using System.Xml;
 
 namespace Scraper
 {
-    using NamedElementDictionary = Dictionary<string, Selector>;
+    using NamedElementDictionary = Dictionary<string, ScraperDesigner.Selector>;
     using PageElementDictionary = Dictionary<string, HtmlElement>;
     using ReadOnlyPageElementDictionary = ReadOnlyDictionary<string, HtmlElement>;
 
@@ -136,7 +136,7 @@ namespace Scraper
             foreach (var keyValPair in namedElements[state])
             {
                 string name = keyValPair.Key;
-                Selector selector = keyValPair.Value;
+                ScraperDesigner.Selector selector = keyValPair.Value;
                 string tag = selector.Tag;
 
                 // Filter by tag name if specified.
@@ -162,9 +162,10 @@ namespace Scraper
                 {
                     //Debug.WriteLine(string.Format("id={0} name={1} class={2}", element.GetAttribute("id"), element.GetAttribute("name"), element.GetAttribute("className")));
 
-                    if ((!string.IsNullOrEmpty(selector.ClientId) && selector.ClientId == element.GetAttribute("id")) ||
-                        (!string.IsNullOrEmpty(selector.Name) && selector.Name == element.GetAttribute("name")) ||
-                        (!string.IsNullOrEmpty(selector.ClassName) && selector.ClassName == element.GetAttribute("className")))
+                    //if ((!string.IsNullOrEmpty(selector.Id) && selector.Id == element.GetAttribute("id")) ||
+                    //    (!string.IsNullOrEmpty(selector.Name) && selector.Name == element.GetAttribute("name")) ||
+                    //    (!string.IsNullOrEmpty(selector.ClassName) && selector.ClassName == element.GetAttribute("className")))
+                    if (selector.Match(element))
                     {
                         //Debug.WriteLine("FOUND!!");
                         pageElements[name] = element;
