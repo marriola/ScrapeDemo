@@ -72,7 +72,6 @@
     <Compile Include="StepsForm.Designer.cs">
       <DependentUpon>StepsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="var.cs" />
     <EmbeddedResource Include="ElementNameDialog.resx">
       <DependentUpon>ElementNameDialog.cs</DependentUpon>
     </EmbeddedResource>
