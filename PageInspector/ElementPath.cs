@@ -23,6 +23,14 @@ namespace ScraperDesigner
         public static ElementPath FromString(string pathString)
         {
             ElementPath path = new ElementPath();
+
+            // Remove leading slash
+            if (pathString.StartsWith("/"))
+            {
+                pathString = pathString.Substring(1);
+            }
+
+            // Separate out and add individual selectors to path
             StringBuilder thisNode = new StringBuilder();
             foreach (char c in pathString)
             {
@@ -37,10 +45,12 @@ namespace ScraperDesigner
                 thisNode.Append(c);
             }
 
+            // Add last selectorif present
             if (thisNode.Length > 0)
             {
                 path.path.Add(Selector.FromString(thisNode.ToString()));
             }
+
             return path;
         }
 
@@ -49,8 +59,8 @@ namespace ScraperDesigner
             StringBuilder sb = new StringBuilder();
             foreach (Selector selector in path.Reverse<Selector>())
             {
-                sb.Append(selector.ToString(false));
                 sb.Append('/');
+                sb.Append(selector.ToString(false));
             }
             return sb.ToString();
         }
