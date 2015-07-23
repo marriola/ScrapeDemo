@@ -43,9 +43,9 @@
             this.chkSelectionMode = new System.Windows.Forms.CheckBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.itmOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.itmSave = new System.Windows.Forms.ToolStripMenuItem();
             this.itmExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.itmOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -195,6 +195,13 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(35, 20);
             this.toolStripMenuItem1.Text = "&File";
             // 
+            // itmOpen
+            // 
+            this.itmOpen.Name = "itmOpen";
+            this.itmOpen.Size = new System.Drawing.Size(152, 22);
+            this.itmOpen.Text = "&Open";
+            this.itmOpen.Click += new System.EventHandler(this.itmOpen_Click);
+            // 
             // itmSave
             // 
             this.itmSave.Name = "itmSave";
@@ -207,14 +214,6 @@
             this.itmExit.Name = "itmExit";
             this.itmExit.Size = new System.Drawing.Size(152, 22);
             this.itmExit.Text = "E&xit";
-            // 
-            // itmOpen
-            // 
-            this.itmOpen.Enabled = false;
-            this.itmOpen.Name = "itmOpen";
-            this.itmOpen.Size = new System.Drawing.Size(152, 22);
-            this.itmOpen.Text = "&Open";
-            this.itmOpen.Click += new System.EventHandler(this.itmOpen_Click);
             // 
             // DesignerWindow
             // 
