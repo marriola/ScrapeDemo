@@ -10,8 +10,8 @@ namespace ScraperDesigner
 {
     public struct Selector
     {
-        private static readonly Regex reSelector = new Regex(@"(?<tag>\w*)(\s*id=(?<quote>['""])(?<id>[-_:.|a-z|A-Z|0-9]+)\k<quote>)?(\s*(?<attributes>.*))?");
-        private static readonly Regex reAttributes = new Regex(@"(?<name>[^ '""<>/=]+?)=(?<quote>['""])(?<value>.+?)\k<quote>\s*");
+        private static readonly Regex reSelector = new Regex(@"(?<tag>\w*)(\s*(?<attributes>.*))?");
+        private static readonly Regex reAttributes = new Regex(@"(?<name>[^ '""<>/=]+)=(?<value>\S+)\s*");
 
         private static readonly string[] standardAttributes = { "id", "name", "className", "href" };
 
@@ -113,13 +113,14 @@ namespace ScraperDesigner
 
         public static Selector FromString(string selectorString)
         {
-            string tag, id, attributesString;
+            string tag;
+            string id = string.Empty;
+            string attributesString;
             bool optional = true;
             var attributes = new Dictionary<string, string>();
 
             Match selectorMatch = reSelector.Match(selectorString);
             tag = selectorMatch.Groups["tag"].Value;
-            id = selectorMatch.Groups["id"].Value;
             attributesString = selectorMatch.Groups["attributes"].Value;
 
             MatchCollection attributesMatches = reAttributes.Matches(attributesString);
@@ -136,22 +137,33 @@ namespace ScraperDesigner
                 attributes.Remove("optional");
             }
 
+            if (attributes.ContainsKey("id"))
+            {
+                id = attributes["id"];
+                attributes.Remove("id");
+            }
+
             return new Selector(tag, id, optional, null, attributes);
         }
 
         public string ToString(bool showPath = true)
         {
             var attrValues = new List<string>();
-            var attributes = this._attributes;
-            Array.ForEach(standardAttributes, x => attrValues.Add(string.Format("{0}={1}", x, attributes[x])));
+            foreach (var key in standardAttributes)
+            {
+                if (_attributes.ContainsKey(key) && !string.IsNullOrEmpty(_attributes[key]))
+                {
+                    attrValues.Add(string.Format("{0}={1}", key, _attributes[key]));
+                }
+            }
 
             string pathString = string.Empty;
             if (showPath)
             {
-                pathString = string.Format("path={0} ", _path.ToString());
+                pathString = string.Format(" path={0}", _path.ToString());
             }
 
-            return string.Format("{{ tag={0}, {1}optional={2}, {3} }}", _tag, pathString, _optional.ToString(), string.Join(", ", attrValues));
+            return string.Format("{0}{1} optional={2} {3}", _tag, pathString, _optional.ToString(), string.Join(" ", attrValues));
         }
     }
 }
