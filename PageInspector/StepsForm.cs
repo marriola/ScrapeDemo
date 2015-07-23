@@ -35,7 +35,9 @@ namespace ScraperDesigner
         {
             int stepIndex = lstSteps.SelectedIndex;
             int elementIndex = lstElements.SelectedIndex;
-            designer.HighlightElement(designer.steps[stepIndex].Elements[elementIndex].Element);
+            //designer.HighlightElement(designer.steps[stepIndex].Elements[elementIndex].Element);
+            ElementDefinition def = designer.steps[stepIndex].Elements[elementIndex];
+            designer.HighlightElement(designer.FindBySelector(def.ElementSelector));
         }
 
         private void lstSteps_SelectedIndexChanged(object sender, EventArgs e)
