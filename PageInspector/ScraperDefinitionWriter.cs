@@ -36,20 +36,20 @@ namespace ScraperDesigner
         {
             writer.WriteStartElement("element");
             writer.WriteAttributeString("id", element.Id);
+            writer.WriteAttributeString("path", element.ElementSelector.Path.ToString());
+            writer.WriteAttributeString("optional", element.ElementSelector.Optional.ToString());
 
-            var values = new Tuple<string, string>[]
-                {
-                    Tuple.Create("tag", element.ElementSelector.Tag),
-                    Tuple.Create("client-id", element.ElementSelector.ClientId),
-                    Tuple.Create("name", element.ElementSelector.Name),
-                    Tuple.Create("class", element.ElementSelector.ClassName)
-                };
-
-            foreach (var value in values)
+            foreach (KeyValuePair<string, string> pair in element.ElementSelector.Attributes)
             {
-                if (!string.IsNullOrEmpty(value.Item2))
+                if (!string.IsNullOrEmpty(pair.Value))
                 {
-                    writer.WriteAttributeString(value.Item1, value.Item2);
+                    string key = pair.Key;
+                    if (key == "id")
+                        key = "client-id";
+                    else if (key == "class")
+                        key = "className";
+
+                    writer.WriteAttributeString(key, pair.Value);
                 }
             }
             writer.WriteEndElement();
