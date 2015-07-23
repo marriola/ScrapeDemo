@@ -12,18 +12,18 @@ namespace DesignerTests
         [TestMethod]
         public void TestSelectorFromString()
         {
-            string selectorString = @"div id=""content"" optional=""true"" class=""panel""";
+            string selectorString = @"div id=content optional=true class=panel";
             Selector selector = Selector.FromString(selectorString);
             Assert.AreEqual(selector.Tag, "div");
             Assert.AreEqual(selector.Attributes["id"], "content");
-            Assert.AreEqual(selector.Attributes["optional"], "true");
+            Assert.AreEqual(selector.Optional, true);
             Assert.AreEqual(selector.Attributes["class"], "panel");
         }
 
         [TestMethod]
         public void TestPathFromString()
         {
-            string pathString = @"div id=""content""/div id=""main""/ul/li";
+            string pathString = @"div id=content/div id=main class=blah/ul/li";
             ElementPath path = ElementPath.FromString(pathString);
 
             List<Selector> selectors = path.path;
@@ -33,6 +33,7 @@ namespace DesignerTests
 
             Assert.AreEqual(selectors[1].Tag, "div");
             Assert.AreEqual(selectors[1].Attributes["id"], "main");
+            Assert.AreEqual(selectors[1].Attributes["class"], "blah");
 
             Assert.AreEqual(selectors[2].Tag, "ul");
             Assert.AreEqual(selectors[3].Tag, "li");
