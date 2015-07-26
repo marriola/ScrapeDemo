@@ -37,11 +37,6 @@ namespace ScraperDesigner
             UpdateButtons();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void UpdateButtons()
         {
             btnDown.Enabled = skippedElements.Count > 0;
