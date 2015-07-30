@@ -105,6 +105,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ajax-loader.gif" />
     <Content Include="Inner.png" />
     <Content Include="Outer.png" />
   </ItemGroup>

@@ -134,6 +134,7 @@
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "StepsForm";
+            this.Opacity = 0.75D;
             this.Text = "Steps";
             this.TopMost = true;
             this.tabControl1.ResumeLayout(false);

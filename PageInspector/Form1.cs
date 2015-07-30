@@ -16,15 +16,9 @@ namespace ScraperDesigner
         internal List<ScraperStep> steps;
 
         const string SCRAPER_FILTER = "Scraper definitions (*.xml)|*.xml|All files|*";
-        const string HIGHLIGHT_STYLE = "background-color: orangered; color: black;";
+        const string HIGHLIGHT_STYLE = "background-color: #ff8900; color: #772200;";
         static readonly string[] identifyingAttributes = new string[] { "id", "name", "href", "class" };
         static readonly string[] attributes = new string[] { "id", "name", "className", "href", "type" };
-        static readonly HashSet<string> uiTags = new HashSet<string>()
-        {
-            "A",
-            "INPUT",
-            "TEXTAREA",
-        };
 
         const string windowTitle = "Page inspector";
 
@@ -32,6 +26,7 @@ namespace ScraperDesigner
         HtmlElement lastMouseOverElement = null;
         string lastStyle = string.Empty;
         bool selectionComplete = true;
+        internal bool changesMade = false;
 
         StepsForm stepsDialog;
 
@@ -44,6 +39,11 @@ namespace ScraperDesigner
             webBrowser1.AllowNavigation = !chkSelectionMode.Checked;
         }
 
+        /// <summary>
+        /// Tries to match an element in the currently loaded document by a selector.
+        /// </summary>
+        /// <param name="selector"></param>
+        /// <returns></returns>
         internal HtmlElement FindBySelector(ScraperDesigner.Selector selector)
         {
             var pathList = selector.Path.path;
@@ -53,7 +53,7 @@ namespace ScraperDesigner
 
             do
             {
-                element = Matches(pathList[i++], siblings);
+                element = Match(pathList[i++], siblings);
                 lastElement = element;
                 if (element != null)
                 {
@@ -64,10 +64,16 @@ namespace ScraperDesigner
                     return null;
                 }
             } while (i < pathList.Count);
-            return Matches(selector, siblings);
+            return Match(selector, siblings);
         }
         
-        internal HtmlElement Matches(ScraperDesigner.Selector selector, HtmlElementCollection siblings = null)
+        /// <summary>
+        /// Attempts to match a selector to an element in the currently loaded document.
+        /// </summary>
+        /// <param name="selector">A selector specifying an element to match.</param>
+        /// <param name="siblings">An element collection from which to match the selector. If null, the elements at the top level of the document body are searched.</param>
+        /// <returns></returns>
+        internal HtmlElement Match(ScraperDesigner.Selector selector, HtmlElementCollection siblings = null)
         {
             if (siblings == null)
             {
@@ -82,13 +88,17 @@ namespace ScraperDesigner
             return null;
         }
 
+        /// <summary>
+        /// Resizes the page controls to fill the entire browser window.
+        /// </summary>
         private void ResizeControls()
         {
-            webBrowser1.Width = this.Size.Width - 32;
-            webBrowser1.Height = this.Size.Height - 160;
-            txtAddress.Width = this.Size.Width - 150;
-            txtElementPath.Width = this.Size.Width - 90;
-            txtElementAttributes.Width = this.Size.Width - 90;
+            webBrowser1.Width = Size.Width - 32;
+            webBrowser1.Height = Size.Height - 160;
+            txtAddress.Width = Size.Width - 167;
+            pbThrobber.Location = new Point(Size.Width - 36, pbThrobber.Location.Y);
+            txtElementPath.Width = Size.Width - 90;
+            txtElementAttributes.Width = Size.Width - 90;
         }
 
         /// <summary>
@@ -118,38 +128,37 @@ namespace ScraperDesigner
         /// <returns></returns>
         public static string ElementPathString(HtmlElement element, bool shortForm = false)
         {
-            StringBuilder sb = new StringBuilder(shortForm ? "/" : "");
             HtmlElement ancestor = element.Parent;
-            string path = "";
-            bool firstElement = true;
+            string path = shortForm ? "/" : "";
+            bool addSeparator = false;
 
             while (ancestor != null)
             {
-                // The display name of the control. If the element's Name property is blank, try
-                // its "name" attribute instead. If that's blank, try the CSS class name.
+                // This is the display name of the control. Iterate through each of the
+                // identifying attributes until we find one.
                 string elementIdentifier = string.Empty;
                 foreach (string attr in identifyingAttributes)
                 {
                     string value = ancestor.GetAttribute(attr);
                     if (!string.IsNullOrEmpty(value))
                     {
-                        elementIdentifier = string.Format("{0}={1}", attr, value, shortForm ? "" : " ");
+                        elementIdentifier = string.Format("{0}={1}", attr, value);
                         break;
                     }
                 }
 
                 string thisElement = string.Format("{0} {1}", ancestor.TagName, elementIdentifier);
 
-                if (firstElement)
-                    firstElement = false;
-                else
+                if (addSeparator)
                     thisElement += shortForm ? "/" : "-> ";
+                else
+                    addSeparator = true;
 
                 ancestor = ancestor.Parent;
                 path = thisElement + path;
             }
-            sb.Append(path);
-            return sb.ToString();
+
+            return path;
         }
 
         /// <summary>
@@ -181,7 +190,7 @@ namespace ScraperDesigner
         /// <summary>
         /// Applies the highlight style to an element while restoring the style of the last highlighted element.
         /// </summary>
-        /// <param name="element"></param>
+        /// <param name="element">The element to highlight. Null may be passed to unhighlight the currently highlighted element if there is one.</param>
         internal void HighlightElement(HtmlElement element)
         {
             // Unhighlight last control moused over
@@ -196,7 +205,9 @@ namespace ScraperDesigner
             }
         }
 
-        
+        /// <summary>
+        /// Saves the current scraper specification to disk.
+        /// </summary>
         private void SaveScraper()
         {
             var dlgSave = new SaveFileDialog()
@@ -211,6 +222,9 @@ namespace ScraperDesigner
             dlgSave.Dispose();
         }
 
+        /// <summary>
+        /// Loads a scraper specification from disk.
+        /// </summary>
         private void LoadScraper()
         {
             var dlgOpen = new OpenFileDialog()
@@ -223,9 +237,35 @@ namespace ScraperDesigner
                 Scraper.ScraperDefinitionReader reader = new Scraper.ScraperDefinitionReader(dlgOpen.FileName);
                 reader.ReadScraperDefinition();
                 steps.Clear();
-                //foreach (var dic in reader.n
             }
             dlgOpen.Dispose();
+        }
+
+        /// <summary>
+        /// Prompts the user to save changes made to the scraper. If no changes have been made, the user is not prompted.
+        /// </summary>
+        /// <returns>True if the designer should continue to shut down, false if not.</returns>
+        private bool PromptSave()
+        {
+            if (!changesMade)
+                return true;
+
+            DialogResult savePromptResult = MessageBox.Show("Do you want to save changes to the scraper specification?", "Scraper designer", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            switch (savePromptResult)
+            {
+                case DialogResult.Yes:
+                    SaveScraper();
+                    return true;
+
+                case DialogResult.No:
+                    return true;
+
+                case DialogResult.Cancel:
+                    return false;
+
+                default:
+                    return false;
+            }
         }
 
         ///////////////////////////////////////////////////////////////////////
@@ -249,6 +289,7 @@ namespace ScraperDesigner
         /// <param name="e"></param>
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+            pbThrobber.Visible = false;
             document = webBrowser1.Document;
 
             // Update browser controls
@@ -273,50 +314,52 @@ namespace ScraperDesigner
         /// <param name="e"></param>
         private void ElementGotFocus(object sender, HtmlElementEventArgs e)
         {
+            if (!chkSelectionMode.Checked)
+                return;
             HighlightElement((HtmlElement)sender);
         }
-        
+
         /// <summary>
-        /// Pops up a dialog to save an element to the step's element collection, so long
-        /// as:
-        ///  * There is a step to add to
-        ///  * Selection mode is on
-        ///  * 
+        /// Pops up a dialog to save an element to the step's element collection.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ElementClicked(object sender, HtmlElementEventArgs e)
         {
-            // Are we getting GotFocus events from parent elements too?
             HtmlElement element = (HtmlElement)sender;
-            //HtmlElement element = lastMouseOverElement;
-            if (!chkSelectionMode.Checked ||        // Selection mode disabled
-                steps.Count == 0 ||                 // No steps to add to
-                element == null ||                  // Nothing hovered over yet
-                !selectionComplete ||
-                element != lastMouseOverElement)
+
+            // Return if...
+            if (!chkSelectionMode.Checked ||        // ...selection mode is disabled
+                element == null ||                  // ...nothing hovered over yet
+                !selectionComplete ||               // ...the element name dialog is still open
+                element != lastMouseOverElement)    // ...or the element receiving this event isn't the last one hovered over
             {
                 return;
             }
+
+            // If there are no steps in the specification, alert the user and return.
+            if (steps.Count == 0)
+            {
+                stepsDialog.AlertUser();
+                return;
+            }
+
             selectionComplete = false;
 
-            // Prompt for a name for the new element
-            string elementName;
+            // Prompt for a name for the new element.
             var elementNameDialog = new ElementNameDialog(element);
             elementNameDialog.txtElementInfo.Text = ElementInfoString(element);
-            if (elementNameDialog.ShowDialog() == DialogResult.OK)
-            {
-                elementName = elementNameDialog.txtElementName.Text;
-            }
-            else
+
+            if (elementNameDialog.ShowDialog() == DialogResult.Cancel)
             {
                 selectionComplete = true;
                 return;
             }
-            element = elementNameDialog.Element;
 
-            // This statement unhighlights the currently highlighted element and forgets it so that
-            // this method is only triggered once.
+            string elementName = elementNameDialog.txtElementName.Text;
+            element = elementNameDialog.Element; // If the user selects one of its ancestors instead, use that.
+
+            // Unhighlight the currently highlighted element.
             HighlightElement(null);
 
             // Add to listbox and elements collection.
@@ -334,6 +377,8 @@ namespace ScraperDesigner
             };
             int stepsIndex = stepsDialog.lstSteps.SelectedIndex;
             steps[stepsIndex].Elements.Insert(elementsIndex + 1, definition);
+            changesMade = true;
+
             selectionComplete = true;
         }
         
@@ -370,6 +415,7 @@ namespace ScraperDesigner
         {
             if (e.KeyCode == Keys.Enter)
             {
+                pbThrobber.Visible = true;
                 webBrowser1.Navigate(txtAddress.Text);
                 e.SuppressKeyPress = true;
             }
@@ -411,7 +457,19 @@ namespace ScraperDesigner
 
         private void itmOpen_Click(object sender, EventArgs e)
         {
-            LoadScraper();
+            if (PromptSave())
+                LoadScraper();
+        }
+
+        private void itmExit_Click(object sender, EventArgs e)
+        {
+            if (PromptSave())
+                Environment.Exit(0);
+        }
+
+        private void DesignerWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = !PromptSave();
         }
     }
 }

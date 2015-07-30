@@ -46,14 +46,16 @@
             this.itmOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.itmSave = new System.Windows.Forms.ToolStripMenuItem();
             this.itmExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.pbThrobber = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbThrobber)).BeginInit();
             this.SuspendLayout();
             // 
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(125, 29);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(537, 20);
+            this.txtAddress.Size = new System.Drawing.Size(512, 20);
             this.txtAddress.TabIndex = 0;
             this.txtAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
@@ -198,14 +200,14 @@
             // itmOpen
             // 
             this.itmOpen.Name = "itmOpen";
-            this.itmOpen.Size = new System.Drawing.Size(152, 22);
+            this.itmOpen.Size = new System.Drawing.Size(100, 22);
             this.itmOpen.Text = "&Open";
             this.itmOpen.Click += new System.EventHandler(this.itmOpen_Click);
             // 
             // itmSave
             // 
             this.itmSave.Name = "itmSave";
-            this.itmSave.Size = new System.Drawing.Size(152, 22);
+            this.itmSave.Size = new System.Drawing.Size(100, 22);
             this.itmSave.Text = "&Save";
             this.itmSave.Click += new System.EventHandler(this.itmSave_Click);
             // 
@@ -214,12 +216,24 @@
             this.itmExit.Name = "itmExit";
             this.itmExit.Size = new System.Drawing.Size(152, 22);
             this.itmExit.Text = "E&xit";
+            this.itmExit.Click += new System.EventHandler(this.itmExit_Click);
+            // 
+            // pbThrobber
+            // 
+            this.pbThrobber.Image = ((System.Drawing.Image)(resources.GetObject("pbThrobber.Image")));
+            this.pbThrobber.Location = new System.Drawing.Point(643, 32);
+            this.pbThrobber.Name = "pbThrobber";
+            this.pbThrobber.Size = new System.Drawing.Size(16, 16);
+            this.pbThrobber.TabIndex = 18;
+            this.pbThrobber.TabStop = false;
+            this.pbThrobber.Visible = false;
             // 
             // DesignerWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(671, 488);
+            this.Controls.Add(this.pbThrobber);
             this.Controls.Add(this.chkSelectionMode);
             this.Controls.Add(this.chkHoverDisplay);
             this.Controls.Add(this.btnBack);
@@ -237,10 +251,12 @@
             this.Name = "DesignerWindow";
             this.Text = "Scraper designer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DesignerWindow_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbThrobber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,6 +281,7 @@
         private System.Windows.Forms.ToolStripMenuItem itmOpen;
         private System.Windows.Forms.ToolStripMenuItem itmSave;
         private System.Windows.Forms.ToolStripMenuItem itmExit;
+        private System.Windows.Forms.PictureBox pbThrobber;
     }
 }
 
